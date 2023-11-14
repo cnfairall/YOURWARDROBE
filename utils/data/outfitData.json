@@ -3,18 +3,21 @@
   "firebaseKey": "833888833",
   "name": "chill out",
   "topId": "204496148",
-  "bottomId": "500003453" 
+  "bottomId": "500003453",
+  "uid": "SalcnHYwfLaNivdcJ6r0dSKk53S2"
 },
 "833888824": {
   "firebaseKey": "833888824",
   "name": "work outfit",
   "topId": "205522649",
-  "bottomId": "205096004" 
+  "bottomId": "205096004",
+  "uid": "SalcnHYwfLaNivdcJ6r0dSKk53S2"
 },
 "444483329": {
   "firebaseKey": "444483329",
   "name": "going out outfit",
   "topId": "205252670",
-  "bottomId": "205211552"  
+  "bottomId": "205211552",
+  "uid": "SalcnHYwfLaNivdcJ6r0dSKk53S2" 
 }
 }
