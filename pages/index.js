@@ -1,20 +1,11 @@
-import { useAuth } from '../utils/context/authContext';
+import React from 'react';
+import ItemCarousels from '../components/Carousels';
 
 function Generate() {
-  const { user } = useAuth();
-
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
-    </div>
+    <>
+      <ItemCarousels />
+    </>
   );
 }
 
