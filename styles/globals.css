@@ -20,3 +20,28 @@ a {
 body {
   background-color: #88effd;
 }
+
+/* .outfitTop {
+  width: 300px;
+}
+
+.outfitBottom{
+  width: 250px;
+} */
+
+/* Card {
+  display: flex;
+} */
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+}
+
+#sign-out {
+  position: right;
+}
