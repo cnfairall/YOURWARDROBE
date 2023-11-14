@@ -1,11 +1,8 @@
-// import { Button } from 'react-bootstrap'; // TODO: COMMENT IN FOR AUTH
-// import { signOut } from '../utils/auth'; // TODO: COMMENT IN FOR AUTH
-// import { useAuth } from '../utils/context/authContext'; // TODO: COMMENT IN FOR AUTH
+import { useAuth } from '../utils/context/authContext';
 
-function Home() {
-  // const { user } = useAuth(); // TODO: COMMENT IN FOR AUTH
+function Generate() {
+  const { user } = useAuth();
 
-  const user = { displayName: 'Dr. T' }; // TODO: COMMENT OUT FOR AUTH
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -21,4 +18,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Generate;
