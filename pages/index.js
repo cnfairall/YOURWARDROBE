@@ -1,10 +1,11 @@
 import React from 'react';
-import ItemCarousels from '../components/Carousels';
+import { BottomCarousel, TopCarousel } from '../components/Carousels';
 
 export default function Generate() {
   return (
     <>
-      <ItemCarousels />
+      <TopCarousel />
+      <BottomCarousel />
     </>
   );
 }
