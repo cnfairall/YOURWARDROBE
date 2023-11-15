@@ -1,24 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
+import React, { useState, useEffect } from 'react';
+import { Carousel, Stack, Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { getItems } from '../api/itemData';
 
 export default function ItemCarousels() {
   const { user } = useAuth();
   const [items, setItems] = useState([]);
-  const [tops, setTops] = useState([]);
-  const [bottoms, setBottoms] = useState([]);
-  const [index, setIndex] = useState(0);
+  const [topIndex, setTopIndex] = useState(0);
+  const [bottomIndex, setBottomIndex] = useState(0);
 
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
+  const handleTopSelect = (selectedIndex) => {
+    setTopIndex(selectedIndex);
+  };
+
+  const handleBottomSelect = (selectedIndex) => {
+    setBottomIndex(selectedIndex);
   };
 
   const sortItems = () => {
     getItems(user.uid).then(setItems);
-    setTops(items.filter((item) => (item.isTop === true)));
-    setBottoms(items.filter((item) => (item.isTop === false)));
   };
 
   useEffect(() => {
@@ -27,20 +28,23 @@ export default function ItemCarousels() {
 
   return (
     <>
-      <Carousel activeIndex={index} onSelect={handleSelect}>
-        {tops.map((item) => (
-          <Carousel.Item>
-            <img key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
-          </Carousel.Item>
-        ))}
-      </Carousel>
-      <Carousel activeIndex={index} onSelect={handleSelect}>
-        {bottoms.map((item) => (
-          <Carousel.Item>
-            <img key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
-          </Carousel.Item>
-        ))}
-      </Carousel>
+      <Stack gap={3}>
+        <Stack direction="horizontal" gap={3}>
+          <Carousel interval={null} activeIndex={topIndex} onSelect={handleTopSelect}>
+            {items.tops?.map((item) => (
+              <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
+            ))}
+          </Carousel>
+        </Stack>
+        <br />
+        <Stack direction="horizontal" gap={3}>
+          <Carousel interval={null} activeIndex={bottomIndex} onSelect={handleBottomSelect}>
+            {items.bottoms?.map((item) => (
+              <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
+            ))}
+          </Carousel>
+        </Stack>
+      </Stack>
     </>
   );
 }
