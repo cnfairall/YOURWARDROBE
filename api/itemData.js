@@ -11,7 +11,10 @@ const getItems = (uid) => new Promise((resolve, reject) => {
   }).then((response) => response.json())
     .then((data) => {
       if (data) {
-        resolve(Object.values(data));
+        const items = Object.values(data);
+        const tops = items.filter((item) => (item.isTop === true));
+        const bottoms = items.filter((item) => (item.isTop === false));
+        resolve({ tops, bottoms });
       } else {
         resolve([]);
       }
