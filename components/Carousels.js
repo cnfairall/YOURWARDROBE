@@ -8,6 +8,7 @@ import {
   Modal,
 } from 'react-bootstrap';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { useAuth } from '../utils/context/authContext';
 import { getItems } from '../api/itemData';
 import { createOutfit, updateOutfit } from '../api/outfitData';
@@ -16,7 +17,7 @@ const initialState = {
   name: '',
 };
 
-export default function ItemCarousels() {
+export default function ItemCarousels({ outfitObj }) {
   const { user } = useAuth();
   const [formInput, setFormInput] = useState({ ...initialState, uid: user.uid });
   const [items, setItems] = useState([]);
@@ -51,19 +52,23 @@ export default function ItemCarousels() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const selectedTop = items.tops[topIndex];
-    const selectedBottom = items.bottoms[bottomIndex];
-    const payload = {
-      ...formInput,
-      uid: user.uid,
-      topId: selectedTop.firebaseKey,
-      bottomId: selectedBottom.firebaseKey,
-    };
-    console.warn(payload);
-    createOutfit(payload).then(({ name }) => {
-      const patchPayload = { firebaseKey: name };
-      updateOutfit(patchPayload).then(() => router.push('/outfits'));
-    });
+    if (outfitObj.firebaseKey) {
+      updateOutfit(formInput).then(() => router.push('/outfits'));
+    } else {
+      const selectedTop = items.tops[topIndex];
+      const selectedBottom = items.bottoms[bottomIndex];
+      const payload = {
+        ...formInput,
+        uid: user.uid,
+        topId: selectedTop.firebaseKey,
+        bottomId: selectedBottom.firebaseKey,
+      };
+      console.warn(payload);
+      createOutfit(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateOutfit(patchPayload).then(() => router.push('/outfits'));
+      });
+    }
   };
 
   return (
@@ -121,3 +126,17 @@ export default function ItemCarousels() {
     </>
   );
 }
+
+ItemCarousels.propTypes = {
+  outfitObj: PropTypes.shape({
+    name: PropTypes.string,
+    topId: PropTypes.string,
+    bottomId: PropTypes.string,
+    firebaseKey: PropTypes.string,
+    uid: PropTypes.string,
+  }),
+};
+
+ItemCarousels.defaultProps = {
+  outfitObj: initialState,
+};
