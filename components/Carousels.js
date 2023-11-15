@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
-import { Carousel, Stack, Button } from 'react-bootstrap';
+import { Carousel, Stack } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { getItems } from '../api/itemData';
 
@@ -18,12 +18,8 @@ export default function ItemCarousels() {
     setBottomIndex(selectedIndex);
   };
 
-  const sortItems = () => {
-    getItems(user.uid).then(setItems);
-  };
-
   useEffect(() => {
-    sortItems();
+    getItems(user.uid).then(setItems);
   }, []);
 
   return (
