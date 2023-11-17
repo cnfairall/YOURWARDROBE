@@ -82,6 +82,11 @@ export default function ItemCarousels({ outfitObj, editTop, editBottom }) {
                   <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
                 ))
                 )}
+              {outfitObj.firebaseKey
+                ? (items.tops?.map((item) => (
+                  <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
+                )))
+                : <></>}
             </Carousel>
           </Stack>
           <br />

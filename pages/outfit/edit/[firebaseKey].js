@@ -16,7 +16,7 @@ export default function EditOutfit() {
       getSingleItem(outfit.topId).then(setEditTop);
       getSingleItem(outfit.bottomId).then(setEditBottom);
       setEditItem(outfit);
-    }, [firebaseKey]);
+    }, []);
   });
 
   return (
