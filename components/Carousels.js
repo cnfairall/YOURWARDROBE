@@ -17,7 +17,7 @@ const initialState = {
   name: '',
 };
 
-export default function ItemCarousels({ outfitObj }) {
+export default function ItemCarousels({ outfitObj, editTop, editBottom }) {
   const { user } = useAuth();
   const [formInput, setFormInput] = useState({ ...initialState, uid: user.uid });
   const [items, setItems] = useState([]);
@@ -43,11 +43,11 @@ export default function ItemCarousels({ outfitObj }) {
       ...prevState,
       [name]: value,
     }));
-    console.warn(formInput);
   };
 
   useEffect(() => {
     getItems(user.uid).then(setItems);
+    if (outfitObj.firebaseKey) setFormInput(outfitObj);
   }, []);
 
   const handleSubmit = (e) => {
@@ -63,7 +63,6 @@ export default function ItemCarousels({ outfitObj }) {
         topId: selectedTop.firebaseKey,
         bottomId: selectedBottom.firebaseKey,
       };
-      console.warn(payload);
       createOutfit(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateOutfit(patchPayload).then(() => router.push('/outfits'));
@@ -77,17 +76,23 @@ export default function ItemCarousels({ outfitObj }) {
         <Stack gap={3}>
           <Stack direction="horizontal" gap={3}>
             <Carousel interval={null} activeIndex={topIndex} onSelect={handleTopSelect}>
-              {items.tops?.map((item) => (
-                <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
-              ))}
+              {outfitObj.firebaseKey
+                ? (<Carousel.Item as="img" key={editTop.firebaseKey} src={editTop.imageUrl} alt={editTop.name} />)
+                : (items.tops?.map((item) => (
+                  <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
+                ))
+                )}
             </Carousel>
           </Stack>
           <br />
           <Stack direction="horizontal" gap={3}>
             <Carousel interval={null} activeIndex={bottomIndex} onSelect={handleBottomSelect}>
-              {items.bottoms?.map((item) => (
-                <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
-              ))}
+              {outfitObj.firebaseKey
+                ? (<Carousel.Item as="img" key={editBottom.firebaseKey} src={editBottom.imageUrl} alt={editBottom.name} />)
+                : (items.bottoms?.map((item) => (
+                  <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
+                ))
+                )}
             </Carousel>
           </Stack>
         </Stack>
@@ -134,9 +139,31 @@ ItemCarousels.propTypes = {
     bottomId: PropTypes.string,
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
+    top: PropTypes.shape({
+      name: PropTypes.string,
+      imageUrl: PropTypes.string,
+      firebaseKey: PropTypes.string,
+    }),
+    bottom: PropTypes.shape({
+      name: PropTypes.string,
+      imageUrl: PropTypes.string,
+      firebaseKey: PropTypes.string,
+    }),
+  }),
+  editTop: PropTypes.shape({
+    name: PropTypes.string,
+    imageUrl: PropTypes.string,
+    firebaseKey: PropTypes.string,
+  }),
+  editBottom: PropTypes.shape({
+    name: PropTypes.string,
+    imageUrl: PropTypes.string,
+    firebaseKey: PropTypes.string,
   }),
 };
 
 ItemCarousels.defaultProps = {
   outfitObj: initialState,
+  editTop: {},
+  editBottom: {},
 };
