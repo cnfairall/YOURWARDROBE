@@ -20,8 +20,8 @@ export default function OutfitCard({ outfitObj }) {
   return (
     <Card style={{ width: '18rem', margin: '10px', border: '3px solid gold' }}>
       <Card.Body>
-        <Card.Img src={topObj.imageUrl} alt={topObj.name} className="outfitTop" />
-        <Card.Img src={bottomObj.imageUrl} alt={bottomObj.name} className="outfitBottom" />
+        <Card.Img src={topObj?.imageUrl} alt={topObj?.name} className="outfitTop" />
+        <Card.Img src={bottomObj?.imageUrl} alt={bottomObj?.name} className="outfitBottom" />
       </Card.Body>
       <Link href={`/outfit/edit/${outfitObj.firebaseKey}`} passHref>
         <Button>EDIT</Button>

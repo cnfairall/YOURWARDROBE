@@ -15,6 +15,9 @@ import { createOutfit, updateOutfit } from '../api/outfitData';
 
 const initialState = {
   name: '',
+  firebaseKey: '',
+  topId: '',
+  bottomId: '',
 };
 
 export default function ItemCarousels({ outfitObj, editTop, editBottom }) {
@@ -52,17 +55,17 @@ export default function ItemCarousels({ outfitObj, editTop, editBottom }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const selectedTop = items.tops[topIndex];
+    const selectedBottom = items.bottoms[bottomIndex];
+    const payload = {
+      ...formInput,
+      uid: user.uid,
+      topId: selectedTop.firebaseKey,
+      bottomId: selectedBottom.firebaseKey,
+    };
     if (outfitObj.firebaseKey) {
-      updateOutfit(formInput).then(() => router.push('/outfits'));
+      updateOutfit(payload).then(() => router.push('/outfits'));
     } else {
-      const selectedTop = items.tops[topIndex];
-      const selectedBottom = items.bottoms[bottomIndex];
-      const payload = {
-        ...formInput,
-        uid: user.uid,
-        topId: selectedTop.firebaseKey,
-        bottomId: selectedBottom.firebaseKey,
-      };
       createOutfit(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateOutfit(patchPayload).then(() => router.push('/outfits'));

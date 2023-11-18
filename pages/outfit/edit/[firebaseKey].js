@@ -4,6 +4,13 @@ import ItemCarousels from '../../../components/Carousels';
 import { getSingleOutfit } from '../../../api/outfitData';
 import { getSingleItem } from '../../../api/itemData';
 
+// const initialState = {
+//   name: '',
+//   topId: '',
+//   bottomId: '',
+//   firebaseKey: '',
+// };
+
 export default function EditOutfit() {
   const [editItem, setEditItem] = useState({});
   const router = useRouter();
@@ -11,11 +18,15 @@ export default function EditOutfit() {
   const [editTop, setEditTop] = useState({});
   const [editBottom, setEditBottom] = useState({});
 
+  const setTopAndBottom = (outfit) => {
+    getSingleItem(outfit.topId).then(setEditTop);
+    getSingleItem(outfit.bottomId).then(setEditBottom);
+  };
+
   useEffect(() => {
     getSingleOutfit(firebaseKey).then((outfit) => {
-      getSingleItem(outfit.topId).then(setEditTop);
-      getSingleItem(outfit.bottomId).then(setEditBottom);
       setEditItem(outfit);
+      setTopAndBottom(outfit);
     }, []);
   });
 
