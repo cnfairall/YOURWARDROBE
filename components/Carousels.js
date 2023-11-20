@@ -15,12 +15,11 @@ import { createOutfit, updateOutfit } from '../api/outfitData';
 
 const initialState = {
   name: '',
-  firebaseKey: '',
   topId: '',
   bottomId: '',
 };
 
-export default function ItemCarousels({ outfitObj, editTop, editBottom }) {
+export default function ItemCarousels({ outfitObj }) {
   const { user } = useAuth();
   const [formInput, setFormInput] = useState({ ...initialState, uid: user.uid });
   const [items, setItems] = useState([]);
@@ -48,6 +47,12 @@ export default function ItemCarousels({ outfitObj, editTop, editBottom }) {
     }));
   };
 
+  // .then((prevState) => {
+  //   const top = items.tops?.find((item) => item.firebaseKey === formInput.topId);
+  //   console.warn('here', top);
+  //   console.warn('hi', prevState);
+  // });
+
   useEffect(() => {
     getItems(user.uid).then(setItems);
     if (outfitObj.firebaseKey) setFormInput(outfitObj);
@@ -72,6 +77,7 @@ export default function ItemCarousels({ outfitObj, editTop, editBottom }) {
       });
     }
   };
+  // find((key) => item[key] === formInput.topId).
 
   return (
     <>
@@ -79,7 +85,16 @@ export default function ItemCarousels({ outfitObj, editTop, editBottom }) {
         <Stack gap={3}>
           <Stack direction="horizontal" gap={3}>
             <Carousel interval={null} activeIndex={topIndex} onSelect={handleTopSelect}>
-              {outfitObj.firebaseKey
+              {items.tops?.map((item) => (
+                <Carousel.Item
+                  as="img"
+                  key={item.firebaseKey}
+                  src={formInput.firebaseKey ? (
+                    Object.values(item).map((i) => i.imageUrl)) : item.imageUrl}
+                  // alt={}
+                />
+              ))}
+              {/* {outfitObj.firebaseKey
                 ? (<Carousel.Item as="img" key={editTop.firebaseKey} src={editTop.imageUrl} alt={editTop.name} />)
                 : (items.tops?.map((item) => (
                   <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
@@ -89,18 +104,18 @@ export default function ItemCarousels({ outfitObj, editTop, editBottom }) {
                 ? (items.tops?.map((item) => (
                   <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
                 )))
-                : <></>}
+                : <></>} */}
             </Carousel>
           </Stack>
           <br />
           <Stack direction="horizontal" gap={3}>
             <Carousel interval={null} activeIndex={bottomIndex} onSelect={handleBottomSelect}>
-              {outfitObj.firebaseKey
+              {/* {outfitObj.firebaseKey
                 ? (<Carousel.Item as="img" key={editBottom.firebaseKey} src={editBottom.imageUrl} alt={editBottom.name} />)
                 : (items.bottoms?.map((item) => (
                   <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
                 ))
-                )}
+                )} */}
             </Carousel>
           </Stack>
         </Stack>
@@ -147,31 +162,10 @@ ItemCarousels.propTypes = {
     bottomId: PropTypes.string,
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
-    top: PropTypes.shape({
-      name: PropTypes.string,
-      imageUrl: PropTypes.string,
-      firebaseKey: PropTypes.string,
-    }),
-    bottom: PropTypes.shape({
-      name: PropTypes.string,
-      imageUrl: PropTypes.string,
-      firebaseKey: PropTypes.string,
-    }),
-  }),
-  editTop: PropTypes.shape({
-    name: PropTypes.string,
-    imageUrl: PropTypes.string,
-    firebaseKey: PropTypes.string,
-  }),
-  editBottom: PropTypes.shape({
-    name: PropTypes.string,
-    imageUrl: PropTypes.string,
-    firebaseKey: PropTypes.string,
   }),
 };
 
 ItemCarousels.defaultProps = {
   outfitObj: initialState,
-  editTop: {},
-  editBottom: {},
+
 };
