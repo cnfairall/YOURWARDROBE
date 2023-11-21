@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { Button, Form } from 'react-bootstrap';
+import {
+  Button, ButtonGroup, Form, ToggleButton, ToggleButtonGroup,
+} from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import { useAuth } from '../../utils/context/authContext';
 import { createItem, updateItem } from '../../api/itemData';
 
@@ -16,7 +18,7 @@ const initialState = {
 export default function ItemForm({ itemObj }) {
   const { user } = useAuth();
   const [formInput, setFormInput] = useState({ ...initialState, uid: user.uid });
-  const router = useRouter();
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     if (itemObj.firebaseKey) setFormInput(itemObj);
@@ -35,56 +37,92 @@ export default function ItemForm({ itemObj }) {
     e.preventDefault();
 
     if (itemObj.firebaseKey) {
-      updateItem(formInput).then(() => router.push('/'));
+      updateItem(formInput).then(() => {
+        setMessage('You added an item to your wardrobe!');
+      });
     } else {
       const payload = { ...formInput, uid: user.uid };
       createItem(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
-        updateItem(patchPayload).then(() => router.push('/'));
+        updateItem(patchPayload).then(() => {
+          setMessage('You added an item to your wardrobe!');
+        });
       });
     }
   };
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <div>
-          <h1>{itemObj.firebaseKey ? 'UPDATE' : 'ADD'} PIECE</h1>
-          <Form.Group className="mb-3">
-            <Form.Control
-              type="text"
-              placeholder="enter image URL"
-              name="imageUrl"
-              value={formInput.imageUrl}
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>BRAND</Form.Label>
-            <Form.Control
-              type="text"
-              name="brand"
-              value={formInput.brand}
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>DESCRIPTION</Form.Label>
-            <Form.Control
-              as="textarea"
-              type="text"
-              name="name"
-              placeholder="e.g. Long Sleeve Crew Neck Sweater"
-              value={formInput.name}
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Button type="submit">{itemObj.firebaseKey ? 'Update' : 'Create'} Piece
-          </Button>
-        </div>
-        <img src={formInput.imageUrl} alt={formInput.name} />
+      {!message ? (
+        <Form onSubmit={handleSubmit}>
+          <div>
+            <h1>{itemObj.firebaseKey ? 'UPDATE' : 'ADD'} PIECE</h1>
+            <Form.Group className="mb-3">
+              <Form.Control
+                type="text"
+                placeholder="enter image URL"
+                name="imageUrl"
+                value={formInput.imageUrl}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <ToggleButtonGroup
+                name="toggle-type"
+                type="radio"
+              >
+                <ToggleButton
+                  id="toggle-top"
+                  value="top"
+                  onChange={(e) => {
+                    setFormInput((prevState) => ({
+                      ...prevState,
+                      isTop: e.target.checked,
+                    }));
+                  }}
+                >TOP
+                </ToggleButton>
+                <br />
+                <ToggleButton
+                  id="toggle-bottom"
+                  value="bottom"
+                >BOTTOM
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>BRAND</Form.Label>
+              <Form.Control
+                type="text"
+                name="brand"
+                value={formInput.brand}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>DESCRIPTION</Form.Label>
+              <Form.Control
+                as="textarea"
+                type="text"
+                name="name"
+                placeholder="e.g. Long Sleeve Crew Neck Sweater"
+                value={formInput.name}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Button type="submit">{itemObj.firebaseKey ? 'Update' : 'Create'} Piece
+            </Button>
+          </div>
+          <img src={formInput.imageUrl} alt={formInput.name} />
 
-      </Form>
+        </Form>
+      )
+        : (
+          <div>
+            <p>{message}</p>
+            <Link passHref href="/">Make more outfits!</Link>
+          </div>
+        )}
     </>
   );
 }

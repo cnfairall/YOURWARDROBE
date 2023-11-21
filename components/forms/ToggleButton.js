@@ -15,7 +15,7 @@ function IsTopToggle() {
         onChange={setIsTop()}
       >
         <ToggleButton
-          value="true"
+          value={true}
         >
           TOP
         </ToggleButton>
