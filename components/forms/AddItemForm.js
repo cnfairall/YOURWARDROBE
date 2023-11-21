@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
 import {
-  Button, ButtonGroup, Form, ToggleButton, ToggleButtonGroup,
+  Button, Form, ToggleButton, ToggleButtonGroup,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
@@ -74,6 +74,7 @@ export default function ItemForm({ itemObj }) {
                 <ToggleButton
                   id="toggle-top"
                   value="top"
+                  checked={formInput.isTop}
                   onChange={(e) => {
                     setFormInput((prevState) => ({
                       ...prevState,
