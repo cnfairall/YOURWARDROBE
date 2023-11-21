@@ -1,7 +1,10 @@
 import React from 'react';
+import ItemForm from '../components/forms/AddItemForm';
 
 export default function AddPiece() {
   return (
-    <div>addPiece</div>
+    <>
+      <ItemForm />
+    </>
   );
 }
