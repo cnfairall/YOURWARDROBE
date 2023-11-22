@@ -46,3 +46,14 @@ body {
   position: right;
 }
 
+#top-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#bottom-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
