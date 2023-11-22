@@ -16,7 +16,7 @@ export default function ShowOutfits() {
   return (
     <>
       {outfits.map((outfit) => (
-        <OutfitCard key={outfit.firebaseKey} outfitObj={outfit} />
+        <OutfitCard key={outfit.firebaseKey} outfitObj={outfit} onUpdate={getAllOutfits} />
       ))}
     </>
   );
