@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemCarousels from '../components/Carousels';
+import ItemCarousels from '../components/forms/Carousels';
 
 function Generate() {
   return (

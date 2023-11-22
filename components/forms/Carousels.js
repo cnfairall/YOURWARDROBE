@@ -9,9 +9,9 @@ import {
 } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { useAuth } from '../utils/context/authContext';
-import { getItems } from '../api/itemData';
-import { createOutfit, updateOutfit } from '../api/outfitData';
+import { useAuth } from '../../utils/context/authContext';
+import { getItems } from '../../api/itemData';
+import { createOutfit, updateOutfit } from '../../api/outfitData';
 
 const initialState = {
   name: '',
