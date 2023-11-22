@@ -43,7 +43,6 @@ export default function ItemCarousels({ outfitObj }) {
       ...prevState,
       [name]: value,
     }));
-    console.warn(formInput);
   };
 
   useEffect(() => {
@@ -63,7 +62,6 @@ export default function ItemCarousels({ outfitObj }) {
         topId: selectedTop.firebaseKey,
         bottomId: selectedBottom.firebaseKey,
       };
-      console.warn(payload);
       createOutfit(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateOutfit(patchPayload).then(() => router.push('/outfits'));
