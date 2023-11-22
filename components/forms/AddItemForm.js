@@ -24,7 +24,7 @@ export default function ItemForm({ itemObj }) {
 
   useEffect(() => {
     if (itemObj.firebaseKey) setFormInput(itemObj);
-  }, []);
+  }, [itemObj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

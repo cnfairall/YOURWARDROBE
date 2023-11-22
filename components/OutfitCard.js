@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
+import Link from 'next/link';
+import { Card, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { getSingleItem } from '../api/itemData';
 
@@ -19,10 +20,15 @@ export default function OutfitCard({ outfitObj }) {
   return (
     <Card style={{ width: '18rem', margin: '10px', border: '3px solid gold' }}>
       <Card.Body>
-        <Card.Img src={topObj.imageUrl} alt={topObj.name} className="outfitTop" />
-        <Card.Img src={bottomObj.imageUrl} alt={bottomObj.name} className="outfitBottom" />
+        <Card.Img src={topObj?.imageUrl} alt={topObj?.name} className="outfitTop" />
+        <Card.Img src={bottomObj?.imageUrl} alt={bottomObj?.name} className="outfitBottom" />
+        <Link href={`/outfit/edit/${outfitObj.firebaseKey}`} passHref>
+          <Button>EDIT</Button>
+        </Link>
+        <Button variant="danger" className="m-2">
+          DELETE
+        </Button>
       </Card.Body>
-
     </Card>
   );
 }

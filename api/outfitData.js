@@ -67,10 +67,44 @@ const getSingleOutfit = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getOutfitsWithTop = (topFirebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/outfits.json?orderBy="topId"&equalTo="${topFirebaseKey}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    }).catch(reject);
+});
+
+const getOutfitsWithBottom = (bottomFirebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/outfits.json?orderBy="bottomId"&equalTo="${bottomFirebaseKey}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    }).catch(reject);
+});
+
 export {
   getOutfits,
   createOutfit,
   updateOutfit,
   deleteOutfit,
   getSingleOutfit,
+  getOutfitsWithTop,
+  getOutfitsWithBottom,
 };

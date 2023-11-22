@@ -19,8 +19,8 @@ export default function NavBarAuth() {
             <Link passHref href="/">
               <Nav.Link>GENERATE</Nav.Link>
             </Link>
-            <Link passHref href="/addPiece">
-              <Nav.Link>ADD PIECE</Nav.Link>
+            <Link passHref href="/items">
+              <Nav.Link>PIECES</Nav.Link>
             </Link>
             <Link passHref href="/outfits">
               <Nav.Link>OUTFITS</Nav.Link>
