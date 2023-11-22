@@ -10,7 +10,7 @@ import {
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useAuth } from '../utils/context/authContext';
-import { getItems } from '../api/itemData';
+import { getItems, getSingleItem } from '../api/itemData';
 import { createOutfit, updateOutfit } from '../api/outfitData';
 
 const initialState = {
@@ -21,7 +21,7 @@ const initialState = {
 
 export default function ItemCarousels({ outfitObj }) {
   const { user } = useAuth();
-  const [formInput, setFormInput] = useState({ ...initialState, uid: user.uid });
+  const [formInput, setFormInput] = useState({ initialState });
   const [items, setItems] = useState([]);
   const [topIndex, setTopIndex] = useState(0);
   const [bottomIndex, setBottomIndex] = useState(0);
@@ -29,6 +29,8 @@ export default function ItemCarousels({ outfitObj }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const router = useRouter();
+  const [top, setTop] = useState({});
+  const [bottom, setBottom] = useState({});
 
   const handleTopSelect = (selectedIndex) => {
     setTopIndex(selectedIndex);
@@ -47,15 +49,13 @@ export default function ItemCarousels({ outfitObj }) {
     }));
   };
 
-  // .then((prevState) => {
-  //   const top = items.tops?.find((item) => item.firebaseKey === formInput.topId);
-  //   console.warn('here', top);
-  //   console.warn('hi', prevState);
-  // });
-
   useEffect(() => {
     getItems(user.uid).then(setItems);
-    if (outfitObj.firebaseKey) setFormInput(outfitObj);
+    if (outfitObj.firebaseKey) {
+      setFormInput(outfitObj);
+      getSingleItem(outfitObj.topId).then(setTop);
+      getSingleItem(outfitObj.bottomId).then(setBottom);
+    }
   }, []);
 
   const handleSubmit = (e) => {
@@ -77,7 +77,6 @@ export default function ItemCarousels({ outfitObj }) {
       });
     }
   };
-  // find((key) => item[key] === formInput.topId).
 
   return (
     <>
@@ -89,8 +88,8 @@ export default function ItemCarousels({ outfitObj }) {
                 <Carousel.Item
                   as="img"
                   key={item.firebaseKey}
-                  src={formInput.firebaseKey ? (
-                    Object.values(item).map((i) => i.imageUrl)) : item.imageUrl}
+                  src={item.firebaseKey === top.firebaseKey
+                    ? top.imageUrl : item.imageUrl}
                   // alt={}
                 />
               ))}
