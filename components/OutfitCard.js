@@ -34,9 +34,11 @@ export default function OutfitCard({ outfitObj, onUpdate }) {
           {/* <Link href={`/outfit/edit/${outfitObj.firebaseKey}`} passHref>
           <Button>EDIT</Button>
         </Link> */}
-          <Button variant="danger" className="m-2" onClick={handleShow}>
-            DELETE
-          </Button>
+          <div>
+            <Button variant="danger" className="m-2" onClick={handleShow}>
+              DELETE
+            </Button>
+          </div>
         </Card.Body>
       </Card>
       <Modal show={show} onHide={handleClose}>
