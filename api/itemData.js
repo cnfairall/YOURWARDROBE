@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
@@ -12,6 +13,15 @@ const getItems = (uid) => new Promise((resolve, reject) => {
     .then((data) => {
       if (data) {
         const items = Object.values(data);
+        const shuffleArray = (array) => {
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+          }
+        };
+        shuffleArray(items);
         const tops = items.filter((item) => (item.isTop === true));
         const bottoms = items.filter((item) => (item.isTop === false));
         resolve({ tops, bottoms });
