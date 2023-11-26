@@ -10,6 +10,7 @@ import {
 } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import { MenuList, StyledButton, Frame } from 'react95';
 import { useAuth } from '../../utils/context/authContext';
 import { getItems } from '../../api/itemData';
 import { createOutfit, updateOutfit } from '../../api/outfitData';
@@ -72,55 +73,59 @@ export default function ItemCarousels({ outfitObj }) {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Stack gap={3} id="generator">
-          <Stack direction="horizontal" gap={3}>
-            <Carousel slide={false} interval={null} activeIndex={topIndex} onSelect={handleTopSelect}>
-              {items.tops?.map((item) => (
-                <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} style={{ width: '150px', height: '200px' }} />
-              ))}
-            </Carousel>
+      <MenuList>
+        <Form id="generator" onSubmit={handleSubmit}>
+          <Stack gap={3}>
+            <Stack direction="horizontal" gap={3}>
+              <Carousel variant="dark" interval={null} activeIndex={topIndex} onSelect={handleTopSelect}>
+                {items.tops?.map((item) => (
+                  <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} style={{ margin: '0 50px', width: '150px', height: '200px' }} />
+                ))}
+              </Carousel>
+            </Stack>
+            <Stack direction="horizontal" gap={3}>
+              <Carousel variant="dark" interval={null} activeIndex={bottomIndex} onSelect={handleBottomSelect}>
+                {items.bottoms?.map((item) => (
+                  <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} style={{ width: '250px', height: '300px' }} />
+                ))}
+              </Carousel>
+            </Stack>
           </Stack>
-          <Stack direction="horizontal" gap={3}>
-            <Carousel interval={null} activeIndex={bottomIndex} onSelect={handleBottomSelect}>
-              {items.bottoms?.map((item) => (
-                <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} style={{ width: '250px', height: '300px' }} />
-              ))}
-            </Carousel>
-          </Stack>
-        </Stack>
-        <Button onClick={handleShow}>SAVE OUTFIT</Button>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>CONFIRM SAVE</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="name"
-              >
-                <Form.Label>Enter description (optional):</Form.Label>
-                <Form.Control
-                  name="name"
-                  value={formInput.name}
-                  as="textarea"
-                  rows={3}
-                  onChange={handleChange}
-                />
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={handleClose}>
-              CANCEL
-            </Button>
-            <Button onClick={handleSubmit}>
-              SAVE
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </Form>
+          <Button id="save" onClick={handleShow}>SAVE OUTFIT</Button>
+          <Modal show={show} onHide={handleClose}>
+            <Frame>
+              <Modal.Header closeButton>
+                <Modal.Title>CONFIRM SAVE</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="name"
+                  >
+                    <Form.Label>Enter description (optional):</Form.Label>
+                    <Form.Control
+                      name="name"
+                      value={formInput.name}
+                      as="textarea"
+                      rows={3}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <StyledButton className="black" onClick={handleClose}>
+                  CANCEL
+                </StyledButton>
+                <StyledButton className="pink" onClick={handleSubmit}>
+                  SAVE
+                </StyledButton>
+              </Modal.Footer>
+            </Frame>
+          </Modal>
+        </Form>
+      </MenuList>
     </>
   );
 }

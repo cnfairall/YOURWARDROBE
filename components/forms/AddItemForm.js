@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
-import { Button, Form, Modal } from 'react-bootstrap';
+import { Form, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { StyledButton } from 'react95';
 import { useAuth } from '../../utils/context/authContext';
 import { createItem, updateItem } from '../../api/itemData';
 
@@ -55,7 +56,7 @@ export default function ItemForm({ itemObj }) {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form id="add" onSubmit={handleSubmit}>
         <div>
           <h1>{itemObj.firebaseKey ? 'UPDATE' : 'ADD'} PIECE</h1>
           <Form.Group className="mb-3">
@@ -126,8 +127,8 @@ export default function ItemForm({ itemObj }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Button type="submit">{itemObj.firebaseKey ? 'Update' : 'Create'} Piece
-          </Button>
+          <StyledButton className="pink" type="submit">{itemObj.firebaseKey ? 'Update' : 'Create'} Piece
+          </StyledButton>
         </div>
         <img src={formInput.imageUrl} alt={formInput.name} />
 
@@ -139,12 +140,12 @@ export default function ItemForm({ itemObj }) {
         </Modal.Header>
         <Modal.Body>
           <p>You added a piece to your wardrobe!</p>
-          <Button onClick={handleClose}>
+          <StyledButton primary onClick={handleClose}>
             ADD ANOTHER
-          </Button>
-          <Button passHref href="/">
+          </StyledButton>
+          <StyledButton primary passHref href="/">
             MAKE OUTFITS
-          </Button>
+          </StyledButton>
         </Modal.Body>
       </Modal>
     </>
