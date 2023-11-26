@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Button } from 'react-bootstrap';
+import { StyledButton } from 'react95';
 import { useAuth } from '../utils/context/authContext';
 import { getItems } from '../api/itemData';
 import ItemCard from '../components/ItemCard';
@@ -19,7 +19,7 @@ export default function ShowItems() {
     <>
       <div className="text-center my-4">
         <Link href="/item/new" passHref>
-          <Button>ADD PIECE</Button>
+          <StyledButton className="pink">ADD PIECE</StyledButton>
         </Link>
         <h1>TOPS</h1>
         <div id="top-container">

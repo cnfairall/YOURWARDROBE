@@ -1,12 +1,11 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=VT323');
 
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -19,17 +18,23 @@ a {
 }
 
 body {
-  background-color: white;
+  background-image: url("/assets/print.jpg");
+  font-family: VT323;
+  font-size: large;
 }
 
 
 Card {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 #sign-out {
@@ -52,14 +57,11 @@ Carousel.item {
   object-fit: cover;
 }
 
-Form {
+#generator {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-#generator {
- margin-top: 50px;
+  padding: 20px;
 }
 
 .hstack {
@@ -83,4 +85,58 @@ Form {
 
 #btn-row {
   display: flex;
+  justify-content: center;
+}
+
+.modal-content {
+  background: none;
+  border: none;
+}
+
+.card {
+  background: none;
+  border: none;
+}
+
+.item.card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pink {
+  background-color: rgb(225, 64, 117)!important;
+}
+
+.black {
+  background-color: black!important;
+  color: white!important;
+}
+
+#add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#save {
+  border-top: 3px solid #f4f4f4;
+  border-left: 3px solid #f4f4f4;
+  border-right: 3px solid #848484;
+  border-bottom: 3px solid #848484;
+  background-color: rgb(225, 64, 117);
+  border-radius: 0;
+  margin-top: 10px;
+  color: black;
+
 }
