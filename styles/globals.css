@@ -1,5 +1,6 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 
+
 html,
 body {
   padding: 0;
@@ -18,28 +19,17 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: white;
 }
 
-/* .outfitTop {
-  width: 300px;
-}
 
-.outfitBottom{
-  width: 250px;
-} */
-
-/* Card {
+Card {
   display: flex;
-} */
-
-.card-body {
-  display: flex;
-  flex-direction: column;
 }
 
 .container {
   display: flex;
+  justify-content: center;
 }
 
 #sign-out {
@@ -56,4 +46,41 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+Carousel.item {
+  object-fit: cover;
+}
+
+Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#generator {
+ margin-top: 50px;
+}
+
+.hstack {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+.hanger {
+  animation-name: rock;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+
+}
+
+@keyframes rock {
+  25%  {rotate: 30deg}
+  50%  {rotate: -30deg}
+  75%  {rotate: 30deg}
+}
+
+#btn-row {
+  display: flex;
 }

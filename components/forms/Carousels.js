@@ -73,19 +73,18 @@ export default function ItemCarousels({ outfitObj }) {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <Stack gap={3}>
+        <Stack gap={3} id="generator">
           <Stack direction="horizontal" gap={3}>
-            <Carousel interval={null} activeIndex={topIndex} onSelect={handleTopSelect}>
+            <Carousel slide={false} interval={null} activeIndex={topIndex} onSelect={handleTopSelect}>
               {items.tops?.map((item) => (
-                <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
+                <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} style={{ width: '150px', height: '200px' }} />
               ))}
             </Carousel>
           </Stack>
-          <br />
           <Stack direction="horizontal" gap={3}>
             <Carousel interval={null} activeIndex={bottomIndex} onSelect={handleBottomSelect}>
               {items.bottoms?.map((item) => (
-                <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} />
+                <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} style={{ width: '250px', height: '300px' }} />
               ))}
             </Carousel>
           </Stack>

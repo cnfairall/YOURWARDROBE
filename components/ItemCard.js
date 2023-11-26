@@ -20,14 +20,16 @@ export default function ItemCard({ itemObj, onUpdate }) {
   return (
     <>
       <Card style={{ width: '10rem', margin: '10px' }}>
-        <Card.Body>
+        <Card.Body className="item">
           <Card.Img src={itemObj.imageUrl} alt={itemObj.name} className="item" />
-          <Link href={`/item/edit/${itemObj.firebaseKey}`} passHref>
-            <Button>EDIT</Button>
-          </Link>
-          <Button variant="danger" className="m-2" onClick={handleShow}>
-            DELETE
-          </Button>
+          <div id="btn-row">
+            <Link href={`/item/edit/${itemObj.firebaseKey}`} passHref>
+              <Button className="m-2">EDIT</Button>
+            </Link>
+            <Button variant="danger" className="m-2" onClick={handleShow}>
+              DELETE
+            </Button>
+          </div>
         </Card.Body>
 
       </Card>
