@@ -114,11 +114,11 @@ export default function ItemCarousels({ outfitObj }) {
                   </Form.Group>
                 </Form>
               </Modal.Body>
-              <Modal.Footer>
-                <StyledButton className="black" onClick={handleClose}>
+              <Modal.Footer className="btn-grp">
+                <StyledButton className="black m-2" onClick={handleClose}>
                   CANCEL
                 </StyledButton>
-                <StyledButton className="pink" onClick={handleSubmit}>
+                <StyledButton className="pink m-2" onClick={handleSubmit}>
                   SAVE
                 </StyledButton>
               </Modal.Footer>

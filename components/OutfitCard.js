@@ -52,10 +52,10 @@ export default function OutfitCard({ outfitObj, onUpdate }) {
           <Modal.Body>
             <p>Are you sure you want to remove this outfit from your wardrobe?</p>
             <div className="btn-grp">
-              <StyledButton primary onClick={handleClose}>
+              <StyledButton className="m-2" primary onClick={handleClose}>
                 CANCEL
               </StyledButton>
-              <StyledButton primary className="black" onClick={deleteAnOutfit}>
+              <StyledButton primary className="black m-2" onClick={deleteAnOutfit}>
                 DELETE
               </StyledButton>
             </div>
