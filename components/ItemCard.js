@@ -24,7 +24,7 @@ export default function ItemCard({ itemObj, onUpdate }) {
         <Card style={{ width: '10rem', margin: '10px' }}>
           <Card.Body className="item">
             <Card.Img style={{ height: '200px', width: '150px' }} src={itemObj.imageUrl} alt={itemObj.name} className="item" />
-            <div id="btn-row">
+            <div className="btn-grp">
               <Link href={`/item/edit/${itemObj.firebaseKey}`} passHref>
                 <StyledButton primary className="m-2">EDIT</StyledButton>
               </Link>
@@ -43,10 +43,10 @@ export default function ItemCard({ itemObj, onUpdate }) {
           <Modal.Body>
             <p>Are you sure you want to remove this item from your wardrobe?</p>
             <div className="btn-grp">
-              <StyledButton primary onClick={handleClose}>
+              <StyledButton primary className="m-2" onClick={handleClose}>
                 CANCEL
               </StyledButton>
-              <StyledButton primary className="black" onClick={deleteAnItem}>
+              <StyledButton primary className="black m-2" onClick={deleteAnItem}>
                 DELETE
               </StyledButton>
             </div>

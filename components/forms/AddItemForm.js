@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
-import { Form, Modal } from 'react-bootstrap';
+import { Form, Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { StyledButton } from 'react95';
+import { StyledButton, Frame } from 'react95';
 import { useAuth } from '../../utils/context/authContext';
 import { createItem, updateItem } from '../../api/itemData';
 
@@ -56,34 +56,36 @@ export default function ItemForm({ itemObj }) {
 
   return (
     <>
-      <Form id="add" onSubmit={handleSubmit}>
-        <div>
+      <Frame>
+        <Form id="add" onSubmit={handleSubmit}>
           <h1>{itemObj.firebaseKey ? 'UPDATE' : 'ADD'} PIECE</h1>
-          <Form.Group className="mb-3">
-            <Form.Control
-              type="text"
-              placeholder="enter image URL"
-              name="imageUrl"
-              value={formInput.imageUrl}
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Check
-              className="text-white mb-3"
-              type="switch"
-              id="top"
-              name="top"
-              label="top?"
-              checked={formInput.isTop}
-              onChange={(e) => {
-                setFormInput((prevState) => ({
-                  ...prevState,
-                  isTop: e.target.checked,
-                }));
-              }}
-            />
-            {/* <ToggleButtonGroup
+          <div id="row">
+            <div>
+              <Form.Group className="mb-3">
+                <Form.Control
+                  type="text"
+                  placeholder="enter image URL"
+                  name="imageUrl"
+                  value={formInput.imageUrl}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Check
+                  className="mb-3"
+                  type="switch"
+                  id="top"
+                  name="top"
+                  label="top?"
+                  checked={formInput.isTop}
+                  onChange={(e) => {
+                    setFormInput((prevState) => ({
+                      ...prevState,
+                      isTop: e.target.checked,
+                    }));
+                  }}
+                />
+                {/* <ToggleButtonGroup
                 name="toggle-type"
                 // type="radio"
               >
@@ -106,47 +108,53 @@ export default function ItemForm({ itemObj }) {
                 >BOTTOM
                 </ToggleButton>
               </ToggleButtonGroup> */}
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>BRAND</Form.Label>
-            <Form.Control
-              type="text"
-              name="brand"
-              value={formInput.brand}
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>DESCRIPTION</Form.Label>
-            <Form.Control
-              as="textarea"
-              type="text"
-              name="name"
-              placeholder="e.g. Long Sleeve Crew Neck Sweater"
-              value={formInput.name}
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <StyledButton className="pink" type="submit">{itemObj.firebaseKey ? 'Update' : 'Create'} Piece
-          </StyledButton>
-        </div>
-        <img src={formInput.imageUrl} alt={formInput.name} />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>BRAND</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="brand"
+                  value={formInput.brand}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>DESCRIPTION</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  type="text"
+                  name="name"
+                  placeholder="e.g. Long Sleeve Crew Neck Sweater"
+                  value={formInput.name}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </div>
+            <img style={{ maxHeight: '200px', marginLeft: '20px' }} src={formInput.imageUrl} alt={formInput.name} />
+          </div>
+          <Button className="save" type="submit">{itemObj.firebaseKey ? 'Update' : 'Create'} Piece
+          </Button>
 
-      </Form>
+        </Form>
+      </Frame>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>BITCHIN!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>You added a piece to your wardrobe!</p>
-          <StyledButton primary onClick={handleClose}>
-            ADD ANOTHER
-          </StyledButton>
-          <StyledButton primary passHref href="/">
-            MAKE OUTFITS
-          </StyledButton>
-        </Modal.Body>
+        <Frame>
+          <Modal.Header closeButton>
+            <Modal.Title>BITCHIN!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>You added a piece to your wardrobe!</p>
+            <div className="btn-grp">
+              <StyledButton primary className="m-2" onClick={handleClose}>
+                ADD ANOTHER
+              </StyledButton>
+              <StyledButton primary className="m-2" passHref href="/">
+                MAKE OUTFITS
+              </StyledButton>
+            </div>
+          </Modal.Body>
+        </Frame>
       </Modal>
     </>
   );

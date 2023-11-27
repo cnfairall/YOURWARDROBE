@@ -94,11 +94,6 @@ Carousel.item {
   75%  {rotate: 30deg}
 }
 
-#btn-row {
-  display: flex;
-  justify-content: center;
-}
-
 .modal-content {
   background: none;
   border: none;
@@ -140,6 +135,7 @@ Carousel.item {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 40px 20px;
 }
 
 .save {
@@ -194,4 +190,27 @@ h1 {
 
 .item-card {
   margin: 10px;
+}
+
+#sign-in {
+  background-image: url("/assets/wave.gif");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: -2px -2px 2px #f4f4f4;
+
+}
+
+#row {
+  display: flex;
+  flex-direction: row;
 }
