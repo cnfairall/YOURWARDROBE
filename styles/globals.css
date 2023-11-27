@@ -1,5 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.css';
-@import url('https://fonts.googleapis.com/css2?family=VT323');
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre');
 
 
 html,
@@ -19,8 +19,9 @@ a {
 
 body {
   background-image: url("/assets/print.jpg");
-  font-family: VT323;
-  font-size: large;
+  font-family: Gemunu Libre;
+  font-size: 20px;
+  color: white;
 }
 
 
@@ -39,12 +40,22 @@ Card {
 
 #sign-out {
   position: right;
+  border-top: 2px solid #f4f4f4;
+  border-left: 2px solid #f4f4f4;
+  border-right: 2px solid #616060;
+  border-bottom: 2px solid #616060;
+  border-radius: 0;
+  color: white;
+  background-color: black;
+  height: 50px;
+ 
 }
 
 #top-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 20px 0;
 }
 
 #bottom-container {
@@ -61,7 +72,7 @@ Carousel.item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .hstack {
@@ -111,10 +122,12 @@ Carousel.item {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 .pink {
   background-color: rgb(225, 64, 117)!important;
+  outline: 2px solid rgb(45, 44, 44);
 }
 
 .black {
@@ -129,14 +142,56 @@ Carousel.item {
   align-items: center;
 }
 
-#save {
-  border-top: 3px solid #f4f4f4;
-  border-left: 3px solid #f4f4f4;
-  border-right: 3px solid #848484;
-  border-bottom: 3px solid #848484;
+.save {
+  border-top: 5px solid #f4f4f4;
+  border-left: 5px solid #f4f4f4;
+  border-right: 5px solid #848484;
+  border-bottom: 5px solid #848484;
+  outline: 2px solid rgb(45, 44, 44);
   background-color: rgb(225, 64, 117);
   border-radius: 0;
   margin-top: 10px;
   color: black;
+  width: 150px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: normal;
+  text-shadow: -1px -1px 1px #f4f4f4;
 
+}
+
+#nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#navbar {
+  background-color: black;
+}
+
+.nav-link {
+  color: white!important;
+
+}
+
+h1 {
+  margin: 20px;
+}
+
+.btn-grp {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+#delete-outfit {
+  margin: 10px;
+}
+
+.item-card {
+  margin: 10px;
 }

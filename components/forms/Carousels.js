@@ -91,7 +91,7 @@ export default function ItemCarousels({ outfitObj }) {
               </Carousel>
             </Stack>
           </Stack>
-          <Button id="save" onClick={handleShow}>SAVE OUTFIT</Button>
+          <Button className="save" onClick={handleShow}>SAVE OUTFIT</Button>
           <Modal show={show} onHide={handleClose}>
             <Frame>
               <Modal.Header closeButton>

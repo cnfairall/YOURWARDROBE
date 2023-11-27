@@ -8,14 +8,14 @@ import { signOut } from '../utils/auth';
 
 export default function NavBarAuth() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar id="navbar" collapseOnSelect expand="lg">
       <Container>
-        <Link passHref href="/">
-          <Navbar.Brand>YOURWARDROBE</Navbar.Brand>
-        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav id="nav">
+            <Link passHref href="/">
+              <Nav.Link id="logo">YOURWARDROBE</Nav.Link>
+            </Link>
             <Link passHref href="/">
               <Nav.Link>GENERATE</Nav.Link>
             </Link>
@@ -25,7 +25,7 @@ export default function NavBarAuth() {
             <Link passHref href="/outfits">
               <Nav.Link>OUTFITS</Nav.Link>
             </Link>
-            <Button id="sign-out" variant="danger" onClick={signOut}>Sign Out</Button>
+            <Button id="sign-out" onClick={signOut}>SIGN OUT</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -4,9 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css';
 
 import React from 'react';
-import {
-  Separator,
-} from 'react95';
+
 import { ThemeProvider } from 'styled-components';
 
 /* Pick a theme of your choice */
@@ -41,7 +39,6 @@ function MyApp({ Component, pageProps }) {
     <>
       <div>
         <ThemeProvider theme={original}>
-          <Separator />
 
           <AuthProvider>
             <ViewDirectorBasedOnUserAuthStatus

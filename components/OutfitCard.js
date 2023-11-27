@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import Link from 'next/link';
 import { Card, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { MenuList, StyledButton } from 'react95';
+import { Frame, StyledButton } from 'react95';
 import { getSingleItem } from '../api/itemData';
 import { deleteOutfit } from '../api/outfitData';
 
@@ -28,37 +28,39 @@ export default function OutfitCard({ outfitObj, onUpdate }) {
 
   return (
     <>
-      <Card style={{ width: '18rem', margin: '10px' }}>
-        <MenuList>
+      <Card style={{ width: '15rem', margin: '10px' }}>
+        <Frame>
           <Card.Body>
-            <Card.Img style={{ height: '150px', objectFit: 'fit' }} src={topObj?.imageUrl} alt={topObj?.name} className="outfitTop" />
+            <Card.Img style={{ height: '200px', objectFit: 'fit' }} src={topObj?.imageUrl} alt={topObj?.name} className="outfitTop" />
             <Card.Img style={{ height: '250px', objectFit: 'fit' }} src={bottomObj?.imageUrl} alt={bottomObj?.name} className="outfitBottom" />
             {/* <Link href={`/outfit/edit/${outfitObj.firebaseKey}`} passHref>
           <Button>EDIT</Button>
         </Link> */}
             <div>
-              <StyledButton className="black m-2" onClick={handleShow}>
+              <StyledButton id="delete-outfit" primary className="black" onClick={handleShow}>
                 DELETE
               </StyledButton>
             </div>
           </Card.Body>
-        </MenuList>
+        </Frame>
       </Card>
       <Modal show={show} onHide={handleClose}>
-        <MenuList>
+        <Frame>
           <Modal.Header closeButton>
             <Modal.Title>DELETE ITEM?</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <p>Are you sure you want to remove this outfit from your wardrobe?</p>
-            <StyledButton onClick={handleClose}>
-              CANCEL
-            </StyledButton>
-            <StyledButton className="black" onClick={deleteAnOutfit}>
-              DELETE
-            </StyledButton>
+            <div className="btn-grp">
+              <StyledButton primary onClick={handleClose}>
+                CANCEL
+              </StyledButton>
+              <StyledButton primary className="black" onClick={deleteAnOutfit}>
+                DELETE
+              </StyledButton>
+            </div>
           </Modal.Body>
-        </MenuList>
+        </Frame>
       </Modal>
     </>
   );

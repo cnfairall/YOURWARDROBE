@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Modal } from 'react-bootstrap';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { MenuList, StyledButton } from 'react95';
+import { Frame, StyledButton } from 'react95';
 import { deleteBottomOutfits, deleteTopOutfits } from '../api/mergedData';
 
 export default function ItemCard({ itemObj, onUpdate }) {
@@ -20,7 +20,7 @@ export default function ItemCard({ itemObj, onUpdate }) {
 
   return (
     <>
-      <MenuList>
+      <Frame className="item-card">
         <Card style={{ width: '10rem', margin: '10px' }}>
           <Card.Body className="item">
             <Card.Img style={{ height: '200px', width: '150px' }} src={itemObj.imageUrl} alt={itemObj.name} className="item" />
@@ -34,22 +34,24 @@ export default function ItemCard({ itemObj, onUpdate }) {
             </div>
           </Card.Body>
         </Card>
-      </MenuList>
+      </Frame>
       <Modal show={show} onHide={handleClose}>
-        <MenuList>
+        <Frame>
           <Modal.Header closeButton>
             <Modal.Title>DELETE ITEM?</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <p>Are you sure you want to remove this item from your wardrobe?</p>
-            <StyledButton onClick={handleClose}>
-              CANCEL
-            </StyledButton>
-            <StyledButton className="black" onClick={deleteAnItem}>
-              DELETE
-            </StyledButton>
+            <div className="btn-grp">
+              <StyledButton primary onClick={handleClose}>
+                CANCEL
+              </StyledButton>
+              <StyledButton primary className="black" onClick={deleteAnItem}>
+                DELETE
+              </StyledButton>
+            </div>
           </Modal.Body>
-        </MenuList>
+        </Frame>
       </Modal>
     </>
   );
