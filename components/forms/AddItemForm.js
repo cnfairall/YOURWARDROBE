@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { StyledButton, Frame } from 'react95';
+import Link from 'next/link';
 import { useAuth } from '../../utils/context/authContext';
 import { createItem, updateItem } from '../../api/itemData';
 
@@ -68,6 +69,7 @@ export default function ItemForm({ itemObj }) {
                   name="imageUrl"
                   value={formInput.imageUrl}
                   onChange={handleChange}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -141,17 +143,29 @@ export default function ItemForm({ itemObj }) {
       <Modal show={show} onHide={handleClose}>
         <Frame>
           <Modal.Header closeButton>
-            <Modal.Title>BITCHIN!</Modal.Title>
+            <Modal.Title>TOTALLY BITCHIN!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>You added a piece to your wardrobe!</p>
+            <p>You {itemObj.firebaseKey ? 'updated' : 'added'} a piece {itemObj.firebaseKey ? 'in' : 'to'} your wardrobe!</p>
             <div className="btn-grp">
-              <StyledButton primary className="m-2" onClick={handleClose}>
-                ADD ANOTHER
-              </StyledButton>
-              <StyledButton primary className="m-2" passHref href="/">
-                MAKE OUTFITS
-              </StyledButton>
+              {itemObj.firebaseKey
+                ? (
+                  <Link passHref href="/items">
+                    <StyledButton className="black m-2">
+                      EDIT ANOTHER
+                    </StyledButton>
+                  </Link>
+                )
+                : (
+                  <StyledButton className="black m-2" onClick={handleClose}>
+                    ADD ANOTHER
+                  </StyledButton>
+                )}
+              <Link passHref href="/">
+                <StyledButton className="pink m-2">
+                  MAKE OUTFITS
+                </StyledButton>
+              </Link>
             </div>
           </Modal.Body>
         </Frame>

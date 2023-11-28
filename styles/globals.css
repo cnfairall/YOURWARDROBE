@@ -1,6 +1,4 @@
 @import 'bootstrap/dist/css/bootstrap.css';
-@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre');
-
 
 html,
 body {
@@ -19,7 +17,7 @@ a {
 
 body {
   background-image: url("/assets/print.jpg");
-  font-family: Gemunu Libre;
+  font-family: Chicago;
   font-size: 20px;
   color: white;
 }

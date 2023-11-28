@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { MenuList, StyledButton, Frame } from 'react95';
+import { StyledButton, Frame } from 'react95';
 import { useAuth } from '../../utils/context/authContext';
 import { getItems } from '../../api/itemData';
 import { createOutfit, updateOutfit } from '../../api/outfitData';
@@ -73,9 +73,9 @@ export default function ItemCarousels({ outfitObj }) {
 
   return (
     <>
-      <MenuList>
+      <Frame>
         <Form id="generator" onSubmit={handleSubmit}>
-          <Stack gap={3}>
+          <Stack id="stack" gap={1}>
             <Stack direction="horizontal" gap={3}>
               <Carousel variant="dark" interval={null} activeIndex={topIndex} onSelect={handleTopSelect}>
                 {items.tops?.map((item) => (
@@ -125,7 +125,7 @@ export default function ItemCarousels({ outfitObj }) {
             </Frame>
           </Modal>
         </Form>
-      </MenuList>
+      </Frame>
     </>
   );
 }
