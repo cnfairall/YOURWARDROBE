@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=VT323');
 
 html,
 body {
@@ -79,9 +80,9 @@ Carousel.item {
   background-color: white;
 }
 
-.hanger {
+.rock {
   animation-name: rock;
-  animation-duration: 4s;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
 
 }
@@ -176,18 +177,16 @@ h1 {
 .btn-grp {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .navbar-nav {
   align-items: center;
 }
 
-#delete-outfit {
-  margin: 10px;
-}
-
 .item-card {
   margin: 10px;
+  padding: 10px;
 }
 
 #sign-in {
@@ -211,8 +210,21 @@ h1 {
 #row {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 #logo {
   font-size: 30px;
+}
+
+.deets {
+  line-height: 20px;
+  margin-top: 10px;
+  text-align: left;
+  font-family: VT323;
+}
+
+#pen {
+  margin: 0 60px 10px 0;
+  rotate: -60deg;
 }

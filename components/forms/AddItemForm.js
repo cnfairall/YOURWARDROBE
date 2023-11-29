@@ -87,29 +87,6 @@ export default function ItemForm({ itemObj }) {
                     }));
                   }}
                 />
-                {/* <ToggleButtonGroup
-                name="toggle-type"
-                // type="radio"
-              >
-                <ToggleButton
-                  id="toggle-top"
-                  value="top"
-                  checked={formInput.isTop}
-                  onChange={(e) => {
-                    setFormInput((prevState) => ({
-                      ...prevState,
-                      isTop: e.target.checked,
-                    }));
-                  }}
-                >TOP
-                </ToggleButton>
-                <br />
-                <ToggleButton
-                  id="toggle-bottom"
-                  value="bottom"
-                >BOTTOM
-                </ToggleButton>
-              </ToggleButtonGroup> */}
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>BRAND</Form.Label>
@@ -146,23 +123,26 @@ export default function ItemForm({ itemObj }) {
             <Modal.Title>TOTALLY BITCHIN!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>You {itemObj.firebaseKey ? 'updated' : 'added'} a piece {itemObj.firebaseKey ? 'in' : 'to'} your wardrobe!</p>
+            <div id="row">
+              <div>You {itemObj.firebaseKey ? 'updated' : 'added'} a piece {itemObj.firebaseKey ? 'in' : 'to'} your wardrobe!</div>
+              <img id="pen" className="rock" src="/assets/pen.png" alt="fluffy pen animation" style={{ height: '70px' }} />
+            </div>
             <div className="btn-grp">
               {itemObj.firebaseKey
                 ? (
                   <Link passHref href="/items">
-                    <StyledButton className="black m-2">
+                    <StyledButton primary className="m-2">
                       EDIT ANOTHER
                     </StyledButton>
                   </Link>
                 )
                 : (
-                  <StyledButton className="black m-2" onClick={handleClose}>
+                  <StyledButton primary className="m-2" onClick={handleClose}>
                     ADD ANOTHER
                   </StyledButton>
                 )}
               <Link passHref href="/">
-                <StyledButton className="pink m-2">
+                <StyledButton primary className="black m-2">
                   MAKE OUTFITS
                 </StyledButton>
               </Link>
@@ -177,7 +157,7 @@ export default function ItemForm({ itemObj }) {
 ItemForm.propTypes = {
   itemObj: PropTypes.shape({
     name: PropTypes.string,
-    image: PropTypes.string,
+    imageUrl: PropTypes.string,
     firebaseKey: PropTypes.string,
     brand: PropTypes.string,
   }),
