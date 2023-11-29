@@ -33,9 +33,7 @@ export default function OutfitCard({ outfitObj, onUpdate }) {
           <Card.Body>
             <Card.Img style={{ height: '200px', objectFit: 'fit' }} src={topObj?.imageUrl} alt={topObj?.name} className="outfitTop" />
             <Card.Img style={{ height: '250px', objectFit: 'fit' }} src={bottomObj?.imageUrl} alt={bottomObj?.name} className="outfitBottom" />
-            {/* <Link href={`/outfit/edit/${outfitObj.firebaseKey}`} passHref>
-          <Button>EDIT</Button>
-        </Link> */}
+            <p>{outfitObj.name}</p>
             <div>
               <StyledButton id="delete-outfit" primary className="black" onClick={handleShow}>
                 DELETE

@@ -3,7 +3,6 @@ import { deleteItem } from './itemData';
 
 const deleteTopOutfits = (itemId) => new Promise((resolve, reject) => {
   getOutfitsWithTop(itemId).then((outfitArray) => {
-    console.warn(outfitArray);
     const deleteOutfitPromises = outfitArray.map((outfit) => deleteOutfit(outfit.firebaseKey));
 
     Promise.all(deleteOutfitPromises).then(() => {
