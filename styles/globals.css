@@ -132,9 +132,9 @@ Carousel.item {
 #add {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 40px 20px;
+  justify-content: left;
+  align-items: left;
+  margin: 0 20px 20px;
 }
 
 .save {
@@ -172,6 +172,7 @@ Carousel.item {
 
 h1 {
   margin: 20px;
+  text-align: center;
 }
 
 .btn-grp {
@@ -211,6 +212,8 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-family: VT323;
+  font-size: 20px;
 }
 
 #logo {
@@ -227,4 +230,46 @@ h1 {
 #pen {
   margin: 0 60px 10px 0;
   rotate: -60deg;
+}
+
+#frame {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+#form-top {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+
+}
+
+#form-btm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#form-mid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#add-item-btn {
+width: 150px;
+height: 50px;
+line-height: 20px;
+font-size: 20px;
+}
+
+.form-control {
+  border-radius: 0;
 }
