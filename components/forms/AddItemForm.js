@@ -124,7 +124,7 @@ export default function ItemForm({ itemObj }) {
           </Modal.Header>
           <Modal.Body>
             <div id="row">
-              <div>You {itemObj.firebaseKey ? 'updated' : 'added'} a piece {itemObj.firebaseKey ? 'in' : 'to'} your wardrobe!</div>
+              <div style={{ fontSize: '20px' }}>You {itemObj.firebaseKey ? 'updated' : 'added'} a piece {itemObj.firebaseKey ? 'in' : 'to'} your wardrobe!</div>
               <img id="pen" className="rock" src="/assets/pen.png" alt="fluffy pen animation" style={{ height: '70px' }} />
             </div>
             <div className="btn-grp">

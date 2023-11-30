@@ -211,6 +211,7 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-family: VT323;
 }
 
 #logo {
