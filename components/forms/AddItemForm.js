@@ -12,6 +12,7 @@ const initialState = {
   name: '',
   brand: '',
   imageUrl: '',
+  fileName: '',
   isTop: false,
 };
 
@@ -22,13 +23,18 @@ export default function ItemForm({ itemObj }) {
   const [formInput, setFormInput] = useState({ ...initialState, uid: user.uid });
   const [show, setShow] = useState(false);
   const handleClose = () => {
-    setShow(false);
     setFormInput(initialState);
+    setImgUrl('');
+    setProgress(0);
+    setShow(false);
   };
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    if (itemObj.firebaseKey) setFormInput(itemObj);
+    if (itemObj.firebaseKey) {
+      setFormInput(itemObj);
+      setImgUrl(itemObj.imageUrl);
+    }
   }, [itemObj]);
 
   const handleChange = (e) => {
@@ -51,7 +57,8 @@ export default function ItemForm({ itemObj }) {
         setImgUrl(url);
         setFormInput((prevState) => ({
           ...prevState,
-          imageUrl: imgUrl,
+          imageUrl: url,
+          fileName: file.name,
         }));
       });
     });
@@ -100,11 +107,11 @@ export default function ItemForm({ itemObj }) {
         <Form id="add" onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
             <Form.Control
+              style={{ display: 'none' }}
               type="text"
               name="imageUrl"
               value={formInput.imageUrl}
               onChange={handleChange}
-              required
             />
           </Form.Group>
           <Form.Group>
@@ -178,7 +185,7 @@ export default function ItemForm({ itemObj }) {
             <Modal.Title>TOTALLY BITCHIN!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>You {itemObj.firebaseKey ? 'updated' : 'added'} a piece {itemObj.firebaseKey ? 'in' : 'to'} your wardrobe!</p>
+            <p style={{ fontFamily: 'VT323' }}>You {itemObj.firebaseKey ? 'updated' : 'added'} a piece {itemObj.firebaseKey ? 'in' : 'to'} your wardrobe!</p>
             <div className="btn-grp">
               {itemObj.firebaseKey
                 ? (
@@ -210,6 +217,7 @@ ItemForm.propTypes = {
   itemObj: PropTypes.shape({
     name: PropTypes.string,
     imageUrl: PropTypes.string,
+    fileName: PropTypes.string,
     firebaseKey: PropTypes.string,
     brand: PropTypes.string,
   }),
