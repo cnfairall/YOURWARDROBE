@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { useAuth } from './context/authContext';
 import Loading from '../components/Loading';
 import Signin from '../components/Signin';
-import Footer from '../components/Footer';
 import NavBarAuth from '../components/NavBarAuth';
 import PageFooter from '../components/Footer';
 

@@ -4,11 +4,25 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { Frame, StyledButton } from 'react95';
 import { deleteBottomOutfits, deleteTopOutfits } from '../api/mergedData';
+import { storage } from '../utils/client';
+import { useAuth } from '../utils/context/authContext';
 
 export default function ItemCard({ itemObj, onUpdate }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const { user } = useAuth();
+
+  const deleteImg = () => {
+    const url = `gs://wardrobe-c1d45.appspot.com/files/${user.uid}/${itemObj.fileName}`;
+    const imgRef = storage.refFromURL(url);
+
+    imgRef.delete().then(() => {
+    })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const [details, setDetails] = useState(false);
   const handleDetails = () => {
     if (details === true) {
@@ -24,6 +38,7 @@ export default function ItemCard({ itemObj, onUpdate }) {
     } else {
       deleteBottomOutfits(itemObj.firebaseKey).then(() => onUpdate());
     }
+    deleteImg();
   };
 
   return (
@@ -82,6 +97,7 @@ ItemCard.propTypes = {
     uid: PropTypes.string,
     brand: PropTypes.string,
     imageUrl: PropTypes.string,
+    fileName: PropTypes.string,
     isTop: PropTypes.bool,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,

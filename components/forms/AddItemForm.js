@@ -6,26 +6,35 @@ import { StyledButton, Frame } from 'react95';
 import Link from 'next/link';
 import { useAuth } from '../../utils/context/authContext';
 import { createItem, updateItem } from '../../api/itemData';
+import { storage } from '../../utils/client';
 
 const initialState = {
   name: '',
   brand: '',
   imageUrl: '',
+  fileName: '',
   isTop: false,
 };
 
 export default function ItemForm({ itemObj }) {
+  const [progress, setProgress] = useState(0);
+  const [imgUrl, setImgUrl] = useState('');
   const { user } = useAuth();
   const [formInput, setFormInput] = useState({ ...initialState, uid: user.uid });
   const [show, setShow] = useState(false);
   const handleClose = () => {
-    setShow(false);
     setFormInput(initialState);
+    setImgUrl('');
+    setProgress(0);
+    setShow(false);
   };
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    if (itemObj.firebaseKey) setFormInput(itemObj);
+    if (itemObj.firebaseKey) {
+      setFormInput(itemObj);
+      setImgUrl(itemObj.imageUrl);
+    }
   }, [itemObj]);
 
   const handleChange = (e) => {
@@ -35,6 +44,30 @@ export default function ItemForm({ itemObj }) {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const uploadFiles = (file) => {
+    const uploadTask = storage.ref(`files/${user.uid}/${file.name}`).put(file);
+    uploadTask.on('state_changed', (snapshot) => {
+      const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+      setProgress(prog);
+    }, (error) => console.log(error),
+    () => {
+      storage.ref(`files/${user.uid}`).child(file.name).getDownloadURL().then((url) => {
+        setImgUrl(url);
+        setFormInput((prevState) => ({
+          ...prevState,
+          imageUrl: url,
+          fileName: file.name,
+        }));
+      });
+    });
+  };
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+    const file = e.target[0]?.files[0];
+    uploadFiles(file);
   };
 
   const handleSubmit = (e) => {
@@ -58,27 +91,51 @@ export default function ItemForm({ itemObj }) {
   return (
     <>
       <Frame>
+        <h1>{itemObj.firebaseKey ? 'UPDATE' : 'ADD'} PIECE</h1>
+        <div>
+          <Form onSubmit={handleUpload} className="form">
+            <input type="file" />
+            <button type="submit">Upload</button>
+          </Form>
+          {!imgUrl && (
+          <div className="outerbar">
+            <div className="innerbar" style={{ width: `${progress}%` }}>{progress}%</div>
+          </div>
+          )}
+          {imgUrl && <img src={imgUrl} alt="uploaded file" height={200} />}
+        </div>
         <Form id="add" onSubmit={handleSubmit}>
-          <h1>{itemObj.firebaseKey ? 'UPDATE' : 'ADD'} PIECE</h1>
-          <div id="row">
-            <div>
-              <Form.Group className="mb-3">
-                <Form.Control
-                  type="text"
-                  placeholder="enter image URL"
-                  name="imageUrl"
-                  value={formInput.imageUrl}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Check
-                  className="mb-3"
-                  type="switch"
-                  id="top"
-                  name="top"
-                  label="top?"
+          <Form.Group className="mb-3">
+            <Form.Control
+              style={{ display: 'none' }}
+              type="text"
+              name="imageUrl"
+              value={formInput.imageUrl}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Check
+              className="mb-3"
+              type="switch"
+              id="top"
+              name="top"
+              label="top?"
+              checked={formInput.isTop}
+              onChange={(e) => {
+                setFormInput((prevState) => ({
+                  ...prevState,
+                  isTop: e.target.checked,
+                }));
+              }}
+            />
+            {/* <ToggleButtonGroup
+                name="toggle-type"
+                // type="radio"
+              >
+                <ToggleButton
+                  id="toggle-top"
+                  value="top"
                   checked={formInput.isTop}
                   onChange={(e) => {
                     setFormInput((prevState) => ({
@@ -86,31 +143,36 @@ export default function ItemForm({ itemObj }) {
                       isTop: e.target.checked,
                     }));
                   }}
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>BRAND</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="brand"
-                  value={formInput.brand}
-                  onChange={handleChange}
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>DESCRIPTION</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  type="text"
-                  name="name"
-                  placeholder="e.g. Long Sleeve Crew Neck Sweater"
-                  value={formInput.name}
-                  onChange={handleChange}
-                />
-              </Form.Group>
-            </div>
-            <img style={{ maxHeight: '200px', marginLeft: '20px' }} src={formInput.imageUrl} alt={formInput.name} />
-          </div>
+                >TOP
+                </ToggleButton>
+                <br />
+                <ToggleButton
+                  id="toggle-bottom"
+                  value="bottom"
+                >BOTTOM
+                </ToggleButton>
+              </ToggleButtonGroup> */}
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>BRAND</Form.Label>
+            <Form.Control
+              type="text"
+              name="brand"
+              value={formInput.brand}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>DESCRIPTION</Form.Label>
+            <Form.Control
+              as="textarea"
+              type="text"
+              name="name"
+              placeholder="e.g. Long Sleeve Crew Neck Sweater"
+              value={formInput.name}
+              onChange={handleChange}
+            />
+          </Form.Group>
           <Button className="save" type="submit">{itemObj.firebaseKey ? 'Update' : 'Create'} Piece
           </Button>
 
@@ -158,6 +220,7 @@ ItemForm.propTypes = {
   itemObj: PropTypes.shape({
     name: PropTypes.string,
     imageUrl: PropTypes.string,
+    fileName: PropTypes.string,
     firebaseKey: PropTypes.string,
     brand: PropTypes.string,
   }),
