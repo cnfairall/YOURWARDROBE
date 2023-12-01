@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
-import { Form, Modal, Button } from 'react-bootstrap';
+import {
+  Form, Modal, Button, ToggleButtonGroup, ToggleButton,
+} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { StyledButton, Frame } from 'react95';
 import Link from 'next/link';
@@ -117,45 +119,34 @@ export default function ItemForm({ itemObj }) {
           </Form.Group>
           <div id="form-mid">
             <div className="column">
-              <Form.Group>
-                <Form.Check
-                  className="mb-3"
-                  type="switch"
-                  id="top"
-                  name="top"
-                  label="top?"
-                  checked={formInput.isTop}
+              <ToggleButtonGroup
+                name="isTop"
+                type="radio"
+              >
+                <ToggleButton
+                  id="toggle-top"
+                  value="foo"
                   onChange={(e) => {
                     setFormInput((prevState) => ({
                       ...prevState,
-                      isTop: e.target.checked,
+                      isTop: Boolean(e.target.value),
                     }));
                   }}
-                />
-                {/* <ToggleButtonGroup
-                name="toggle-type"
-                // type="radio"
-                >
-                <ToggleButton
-                id="toggle-top"
-                value="top"
-                checked={formInput.isTop}
-                onChange={(e) => {
-                  setFormInput((prevState) => ({
-                    ...prevState,
-                    isTop: e.target.checked,
-                  }));
-                }}
                 >TOP
                 </ToggleButton>
                 <br />
                 <ToggleButton
-                id="toggle-bottom"
-                value="bottom"
+                  id="toggle-bottom"
+                  value=""
+                  onChange={(e) => {
+                    setFormInput((prevState) => ({
+                      ...prevState,
+                      isTop: Boolean(e.target.value),
+                    }));
+                  }}
                 >BOTTOM
                 </ToggleButton>
-              </ToggleButtonGroup> */}
-              </Form.Group>
+              </ToggleButtonGroup>
               <Form.Group className="mb-3">
                 <Form.Label>BRAND</Form.Label>
                 <Form.Control
