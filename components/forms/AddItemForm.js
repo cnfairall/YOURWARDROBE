@@ -120,12 +120,16 @@ export default function ItemForm({ itemObj }) {
           <div id="form-mid">
             <div className="column">
               <ToggleButtonGroup
+                id="toggle"
                 name="isTop"
                 type="radio"
+
               >
                 <ToggleButton
+                  className="styled"
                   id="toggle-top"
                   value="foo"
+                  style={{ marginRight: '5px' }}
                   onChange={(e) => {
                     setFormInput((prevState) => ({
                       ...prevState,
@@ -134,10 +138,12 @@ export default function ItemForm({ itemObj }) {
                   }}
                 >TOP
                 </ToggleButton>
-                <br />
+
                 <ToggleButton
+                  className="styled"
                   id="toggle-bottom"
                   value=""
+                  style={{ marginLeft: '5px' }}
                   onChange={(e) => {
                     setFormInput((prevState) => ({
                       ...prevState,
