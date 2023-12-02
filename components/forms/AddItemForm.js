@@ -93,10 +93,17 @@ export default function ItemForm({ itemObj }) {
   return (
     <>
       <Frame id="frame">
-        <h1>{itemObj.firebaseKey ? 'UPDATE' : 'ADD'} PIECE</h1>
+        <h1 style={{ border: '2px dotted black' }}>{itemObj.firebaseKey ? 'UPDATE' : 'ADD'} PIECE</h1>
         <div id="form-top">
-          <div className="column">
-            <Form onSubmit={handleUpload} className="form">
+          <div
+            className="column"
+            style={{ width: '100%' }}
+          >
+            <Form
+              id="upload"
+              onSubmit={handleUpload}
+              className="form"
+            >
               <input type="file" />
               <button type="submit">Upload</button>
             </Form>
@@ -118,14 +125,18 @@ export default function ItemForm({ itemObj }) {
             />
           </Form.Group>
           <div id="form-mid">
-            <div className="column">
+            <div className="column wide">
               <ToggleButtonGroup
+                id="toggle"
                 name="isTop"
                 type="radio"
+
               >
                 <ToggleButton
+                  className="styled"
                   id="toggle-top"
                   value="foo"
+                  style={{ marginRight: '5px' }}
                   onChange={(e) => {
                     setFormInput((prevState) => ({
                       ...prevState,
@@ -134,10 +145,12 @@ export default function ItemForm({ itemObj }) {
                   }}
                 >TOP
                 </ToggleButton>
-                <br />
+
                 <ToggleButton
+                  className="styled"
                   id="toggle-bottom"
                   value=""
+                  style={{ marginLeft: '5px' }}
                   onChange={(e) => {
                     setFormInput((prevState) => ({
                       ...prevState,
@@ -160,7 +173,9 @@ export default function ItemForm({ itemObj }) {
             {imgUrl && <img src={imgUrl} alt="uploaded file" width={150} height={200} />}
           </div>
           <div id="form-btm">
-            <Form.Group>
+            <Form.Group
+              className="wide"
+            >
               <Form.Label>DESCRIPTION</Form.Label>
               <Form.Control
                 as="textarea"
