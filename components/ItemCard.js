@@ -45,7 +45,7 @@ export default function ItemCard({ itemObj, onUpdate }) {
     <>
       <Frame className="item-card">
         <Card style={{ width: '10rem', margin: '10px' }}>
-          <Card.Body className="item">
+          <Card.Body>
             <Card.Img style={{ height: '200px', width: '150px' }} src={itemObj.imageUrl} alt={itemObj.name} className="item" />
             {details
               && (
@@ -59,7 +59,7 @@ export default function ItemCard({ itemObj, onUpdate }) {
                 VIEW
               </StyledButton>
               <Link href={`/item/edit/${itemObj.firebaseKey}`} passHref>
-                <StyledButton primary style={{ backgroundColor: 'pink' }}>EDIT</StyledButton>
+                <StyledButton primary className="edit">EDIT</StyledButton>
               </Link>
               <StyledButton primary className="black" onClick={handleShow}>
                 DELETE

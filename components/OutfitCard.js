@@ -28,20 +28,21 @@ export default function OutfitCard({ outfitObj, onUpdate }) {
 
   return (
     <>
-      <Card style={{ width: '15rem', margin: '10px' }}>
-        <Frame>
-          <Card.Body>
+      <Card className="styled" style={{ width: '15rem', margin: '10px' }}>
+        <Card.Body>
+          <div>
             <Card.Img style={{ height: '200px', objectFit: 'fit' }} src={topObj?.imageUrl} alt={topObj?.name} className="outfitTop" />
             <Card.Img style={{ height: '250px', objectFit: 'fit' }} src={bottomObj?.imageUrl} alt={bottomObj?.name} className="outfitBottom" />
-            <p>{outfitObj.name}</p>
-            <div>
-              <StyledButton id="delete-outfit" primary className="black" onClick={handleShow}>
-                DELETE
-              </StyledButton>
-            </div>
-          </Card.Body>
-        </Frame>
+            <p style={{ textAlign: 'center' }}>{outfitObj.name}</p>
+          </div>
+          <div>
+            <StyledButton id="delete-outfit" primary className="black" onClick={handleShow}>
+              DELETE
+            </StyledButton>
+          </div>
+        </Card.Body>
       </Card>
+
       <Modal show={show} onHide={handleClose}>
         <Frame>
           <Modal.Header closeButton>

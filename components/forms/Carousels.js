@@ -73,7 +73,7 @@ export default function ItemCarousels({ outfitObj }) {
 
   return (
     <>
-      <Frame>
+      <Frame style={{ display: 'flex', justifyContent: 'space-around' }}>
         <Form id="generator" onSubmit={handleSubmit}>
           <Stack id="stack" gap={1}>
             <Stack direction="horizontal" gap={3}>
@@ -91,7 +91,7 @@ export default function ItemCarousels({ outfitObj }) {
               </Carousel>
             </Stack>
           </Stack>
-          <Button className="save" onClick={handleShow}>SAVE OUTFIT</Button>
+          <Button style={{ margin: '20px' }} className="save" onClick={handleShow}>SAVE OUTFIT</Button>
           <Modal show={show} onHide={handleClose}>
             <Frame>
               <Modal.Header closeButton>
