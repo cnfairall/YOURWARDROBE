@@ -14,10 +14,10 @@ export default function ShowOutfits() {
   }, []);
 
   return (
-    <>
+    <div className="grid">
       {outfits.map((outfit) => (
         <OutfitCard key={outfit.firebaseKey} outfitObj={outfit} onUpdate={getAllOutfits} />
       ))}
-    </>
+    </div>
   );
 }

@@ -5,12 +5,11 @@ export default function PageFooter() {
   return (
     <>
       <Navbar
-        fixed="bottom"
         style={{
-          height: '40px', width: '100%', backgroundColor: 'black',
+          padding: '20px', marginBottom: '-50px', height: '60px', width: '100%', backgroundColor: 'black',
         }}
       >
-        ©CNF
+        ©CNF 2023
       </Navbar>
     </>
   );
