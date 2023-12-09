@@ -77,18 +77,25 @@ export default function ItemCarousels({ outfitObj }) {
         <Form id="generator" onSubmit={handleSubmit}>
           <Stack id="stack" gap={1}>
             <Stack direction="horizontal" gap={3}>
-              <Carousel variant="dark" interval={null} activeIndex={topIndex} onSelect={handleTopSelect}>
-                {items.tops?.map((item) => (
-                  <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} style={{ margin: '0 50px', width: '150px', height: '200px' }} />
-                ))}
-              </Carousel>
+              {items.tops?.length === 0 ? (<div>Click PIECES to build your wardrobe!</div>)
+
+                : (
+                  <Carousel variant="dark" slide={null} interval={null} activeIndex={topIndex} onSelect={handleTopSelect}>
+                    {items.tops?.map((item) => (
+                      <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} style={{ margin: '0 50px', width: '150px', height: '200px' }} />
+                    ))}
+                  </Carousel>
+                )}
             </Stack>
             <Stack direction="horizontal" gap={3}>
-              <Carousel variant="dark" interval={null} activeIndex={bottomIndex} onSelect={handleBottomSelect}>
-                {items.bottoms?.map((item) => (
-                  <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} style={{ width: '250px', height: '300px' }} />
-                ))}
-              </Carousel>
+              {items.bottoms?.length === 0 ? (<div>Click PIECES to build your wardrobe!</div>)
+                : (
+                  <Carousel variant="dark" slide={null} interval={null} activeIndex={bottomIndex} onSelect={handleBottomSelect}>
+                    {items.bottoms?.map((item) => (
+                      <Carousel.Item as="img" key={item.firebaseKey} src={item.imageUrl} alt={item.name} style={{ width: '250px', height: '300px' }} />
+                    ))}
+                  </Carousel>
+                )}
             </Stack>
           </Stack>
           <Button style={{ margin: '20px' }} className="save" onClick={handleShow}>SAVE OUTFIT</Button>

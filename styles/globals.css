@@ -106,6 +106,9 @@ Carousel.item {
 .card {
   background: none;
   border: none;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 
 }
 
@@ -114,9 +117,6 @@ Carousel.item {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  justify-content: space-between;
-  min-height: 100%;
-
 }
 
 
@@ -246,6 +246,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 #form-top {
@@ -360,21 +361,14 @@ justify-content: space-between;
   right: 0%;
 }
 
-.grid {
-  display: grid;
-  grid-auto-rows: 1fr;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  margin: 20px 0;
-
-}
-
 .edit {
   background-color: rgb(225, 64, 117)!important;
 }
 
 .card-img {
   border-radius: 0!important;
+  background-color: white;
+
 }
 
 #stack {
