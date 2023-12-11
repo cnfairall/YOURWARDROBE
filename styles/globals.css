@@ -15,6 +15,13 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 a {
@@ -368,6 +375,7 @@ justify-content: space-between;
 .card-img {
   border-radius: 0!important;
   background-color: white;
+  justify-content: center;
 
 }
 
@@ -424,4 +432,14 @@ justify-content: space-between;
   transition: none;
   align-items: center;
   display: flex;
+}
+
+#close-form {
+  align-self: flex-end;
+  
+}
+
+.btn-close {
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-hover-border-color: transparent;
 }

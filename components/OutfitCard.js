@@ -32,8 +32,8 @@ export default function OutfitCard({ outfitObj, onUpdate }) {
         <Frame>
           <Card.Body>
             <div className="column" style={{ backgroundColor: 'white' }}>
-              <Card.Img style={{ width: '150px', objectFit: 'fit' }} src={topObj?.imageUrl} alt={topObj?.name} className="outfitTop" />
-              <Card.Img style={{ width: '250px', objectFit: 'fit' }} src={bottomObj?.imageUrl} alt={bottomObj?.name} className="outfitBottom" />
+              <Card.Img style={{ width: '150px', height: '200px', objectFit: 'fit' }} src={topObj?.imageUrl} alt={topObj?.name} className="outfitTop" />
+              <Card.Img style={{ width: '250px', height: '300px', objectFit: 'fit' }} src={bottomObj?.imageUrl} alt={bottomObj?.name} className="outfitBottom" />
             </div>
             <p style={{ textAlign: 'center' }}>{outfitObj.name}</p>
             <div>

@@ -15,7 +15,7 @@ export default function ShowOutfits() {
 
   return (
     <>
-      <div style={{ display: 'flex' }}>
+      <div className="text-center my-4 flex-row">
         {outfits.map((outfit) => (
           <OutfitCard key={outfit.firebaseKey} outfitObj={outfit} onUpdate={getAllOutfits} />
         ))}

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
 import {
-  Form, Modal, Button, ToggleButtonGroup, ToggleButton, CloseButton,
+  Form, Modal, Button, ToggleButtonGroup, ToggleButton,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { StyledButton, Frame } from 'react95';
@@ -95,12 +95,11 @@ export default function ItemForm({ itemObj }) {
       <div>
         <Frame id="frame">
           <Link href="/items" passHref>
-            <CloseButton />
+            <Button id="close-form" className="btn-close" />
           </Link>
           <h1 style={{ border: '2px dotted black' }}>{itemObj.firebaseKey ? 'UPDATE' : 'ADD'} PIECE</h1>
           <div id="form-top">
             <div
-              className="column"
               style={{ width: '100%' }}
             >
               <Form
@@ -129,7 +128,7 @@ export default function ItemForm({ itemObj }) {
               />
             </Form.Group>
             <div id="form-mid">
-              <div className="column wide">
+              <div className="wide">
                 <ToggleButtonGroup
                   id="toggle"
                   name="isTop"
@@ -197,8 +196,11 @@ export default function ItemForm({ itemObj }) {
 
         <Modal show={show} onHide={handleClose}>
           <Frame>
-            <Modal.Header closeButton>
+            <Modal.Header>
               <Modal.Title>TOTALLY BITCHIN!</Modal.Title>
+              <Link href="/items" passHref>
+                <Button className="btn-close" />
+              </Link>
             </Modal.Header>
             <Modal.Body>
               <div id="row">
