@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Form, Modal, Button, ToggleButtonGroup, ToggleButton,
 } from 'react-bootstrap';
@@ -25,15 +25,19 @@ export default function ItemForm({ itemObj }) {
   const [formInput, setFormInput] = useState({ ...initialState, uid: user.uid });
   const [show, setShow] = useState(false);
   const handleClose = () => {
-    setFormInput(initialState);
-    setImgUrl('');
-    setProgress(0);
     setShow(false);
   };
   const handleShow = () => setShow(true);
+  const topBtnRef = useRef();
+  const bottomBtnRef = useRef();
 
   useEffect(() => {
     if (itemObj.firebaseKey) {
+      if (itemObj.isTop === true) {
+        topBtnRef.current.click();
+      } else {
+        bottomBtnRef.current.click();
+      }
       setFormInput(itemObj);
       setImgUrl(itemObj.imageUrl);
     }
@@ -137,6 +141,7 @@ export default function ItemForm({ itemObj }) {
                   <ToggleButton
                     className="styled"
                     id="toggle-top"
+                    ref={topBtnRef}
                     value="foo"
                     style={{ marginRight: '5px' }}
                     onChange={(e) => {
@@ -151,6 +156,7 @@ export default function ItemForm({ itemObj }) {
                   <ToggleButton
                     className="styled"
                     id="toggle-bottom"
+                    ref={bottomBtnRef}
                     value=""
                     style={{ marginLeft: '5px' }}
                     onChange={(e) => {
@@ -242,6 +248,7 @@ ItemForm.propTypes = {
     fileName: PropTypes.string,
     firebaseKey: PropTypes.string,
     brand: PropTypes.string,
+    isTop: PropTypes.bool,
   }),
 };
 
