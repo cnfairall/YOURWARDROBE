@@ -115,15 +115,15 @@ Carousel.item {
   border: none;
   display: flex;
   flex-direction: column;
-  margin: 10px;
 
 }
 
 .card-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 10px;
+  justify-content: stretch;
+  align-items: center;
 }
 
 
@@ -198,6 +198,7 @@ h1 {
 .item-card {
   margin: 10px;
   padding: 10px;
+  justify-content: center;
 }
 
 #sign-in {
@@ -254,6 +255,14 @@ h1 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.blSApK {
+  margin: 10px;
+}
+
+#delete-outfit {
+  justify-self: flex-end;
 }
 
 #form-top {
