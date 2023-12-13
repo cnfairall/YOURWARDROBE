@@ -8,9 +8,8 @@ function Signin() {
   return (
     <div
       style={{
-        padding: '30px',
-        margin: '0 auto',
         height: '100vh',
+        width: '100vh',
         backgroundColor: 'black',
       }}
       id="sign-in"

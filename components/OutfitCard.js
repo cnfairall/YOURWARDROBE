@@ -36,7 +36,7 @@ export default function OutfitCard({ outfitObj, onUpdate }) {
               <Card.Img style={{ width: '250px', height: '300px', objectFit: 'fit' }} src={bottomObj?.imageUrl} alt={bottomObj?.name} className="outfitBottom" />
             </div>
             <p>{outfitObj.name}</p>
-            <div>
+            <div style={{ display: 'grid' }}>
               <StyledButton id="delete-outfit" primary className="black" onClick={handleShow}>
                 DELETE
               </StyledButton>
