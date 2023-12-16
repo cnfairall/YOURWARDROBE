@@ -114,7 +114,8 @@ Carousel.item {
 .card {
   background: none;
   border: none;
-  
+  padding: 0;
+  margin: 0;
 }
 
 .card-body {

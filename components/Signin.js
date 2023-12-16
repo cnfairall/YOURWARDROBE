@@ -9,7 +9,7 @@ function Signin() {
     <div
       style={{
         height: '100vh',
-        width: '100vh',
+        width: '100vw',
         backgroundColor: 'black',
       }}
       id="sign-in"
