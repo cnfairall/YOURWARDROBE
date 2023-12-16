@@ -230,6 +230,7 @@ h1 {
 
 #logo {
   font-size: 30px;
+  color: white!important;
 }
 
 .deets {
@@ -459,4 +460,8 @@ justify-content: space-between;
   background-image: url(https://media.giphy.com/media/3o6wrdHsBoJKGaHjQk/giphy.gif);
   height: 270px;
   width: 480px;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  color: rgb(225, 64, 117)!important;
 }
