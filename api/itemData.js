@@ -13,6 +13,7 @@ const getItems = (uid) => new Promise((resolve, reject) => {
     .then((data) => {
       if (data) {
         const items = Object.values(data);
+        // items are shuffled so that clothes do not appear in the same order every time generator carousel is used
         const shuffleArray = (array) => {
           for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));

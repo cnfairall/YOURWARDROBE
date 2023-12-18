@@ -28,7 +28,7 @@ export default function OutfitCard({ outfitObj, onUpdate }) {
 
   return (
     <>
-      <Frame>
+      <Frame style={{ margin: '10px' }}>
         <Card>
           <Card.Body>
             <div className="column" style={{ backgroundColor: 'white' }}>

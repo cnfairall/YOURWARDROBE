@@ -17,11 +17,11 @@ function Signin() {
       <Frame
         id="box"
         style={{
-          padding: '30px',
+          padding: '50px',
           margin: '0 auto',
         }}
       >
-        <h1>YOURWARDROBE</h1>
+        <h2>YOURWARDROBE</h2>
         <Button className="save" onClick={signIn}>
           Sign In
         </Button>
