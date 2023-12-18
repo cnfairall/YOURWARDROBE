@@ -6,7 +6,7 @@ export default function PageFooter() {
     <>
       <Navbar
         style={{
-          padding: '20px', marginBottom: '-50px', height: '60px', width: '100%', backgroundColor: 'black',
+          color: 'white', padding: '20px', marginBottom: '-50px', height: '60px', width: '100%', backgroundColor: 'black',
         }}
       >
         ©CNF 2023

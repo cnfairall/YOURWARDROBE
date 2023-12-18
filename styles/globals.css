@@ -107,8 +107,8 @@ Carousel.item {
 }
 
 .modal-content {
-  background: none;
-  border: none;
+  background: none!important;
+  border: none!important;
 }
 
 .card {
