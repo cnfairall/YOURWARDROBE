@@ -1,8 +1,8 @@
-# YOURWARDROBE  [![Netlify Status](https://api.netlify.com/api/v1/badges/4ab7e730-7ed3-4cfd-a988-66195e79a991/deploy-status)](https://app.netlify.com/sites/drt-sortinghat/deploys)
+# YOURWARDROBE  [![Netlify Status](https://api.netlify.com/api/v1/badges/fe7072bb-f499-4b35-b67c-2ffbd1e4de63/deploy-status)](https://app.netlify.com/sites/monumental-boba-0bee52/deploys)
 
 Remember the 90s movie Clueless, where rich-girl-with-heart-of-gold Cher clicks through her clothes and assembles bitchin' outfits on her computer? Aspire no more, because now you can create your own digital wardrobe and generate outfits you can save!
 
-[View App](#your-link)
+[View App](https://monumental-boba-0bee52.netlify.app/)
 
 ## Get Started
 PLACE CODE SNIPPET HERE
@@ -25,7 +25,7 @@ PLACE CODE SNIPPET HERE
 https://www.loom.com/share/829b90d831ea441ba2db6bea724af210
 
 ## Relevant Links
-- [Check out the deployed site](#your-link)
+- [Check out the deployed site](https://monumental-boba-0bee52.netlify.app/)
 - [Wireframes](https://www.figma.com/file/99ZqMmpb5zE9t6spYkFj5E/YOURWARDROBE?type=design&node-id=0-1&mode=design&t=cNCh5kz5necI8dAP-0)
 - [Project Board](https://github.com/users/cnfairall/projects/4/views/1)
 
