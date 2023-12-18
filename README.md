@@ -4,9 +4,31 @@ Remember the 90s movie Clueless, where rich-girl-with-heart-of-gold Cher clicks 
 
 [View App](https://monumental-boba-0bee52.netlify.app/)
 
-## Get Started
-PLACE CODE SNIPPET HERE
+## Code Snippet
+Creating the outfit object with the item carousel/generator form:
 
+```
+const handleSubmit = (e) => {
+    e.preventDefault();
+    if (outfitObj.firebaseKey) {
+      updateOutfit(formInput).then(() => router.push('/outfits'));
+    } else {
+      const selectedTop = items.tops[topIndex];
+      const selectedBottom = items.bottoms[bottomIndex];
+      const payload = {
+        ...formInput,
+        uid: user.uid,
+        topId: selectedTop.firebaseKey,
+        bottomId: selectedBottom.firebaseKey,
+      };
+      createOutfit(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateOutfit(patchPayload).then(() => router.push('/outfits'));
+      });
+    }
+  };
+
+```
 ## About the User
 - You: a fashionista who has amazing pieces in your closet but who suffers from the "out of sight, out of mind" dilemma and ends up wearing the same athleisure all the time.
 - You want to get new styling ideas for clothes you already have, so you can avoid buying new things but still feel a total Betty.
@@ -28,9 +50,6 @@ https://www.loom.com/share/829b90d831ea441ba2db6bea724af210
 - [Check out the deployed site](https://monumental-boba-0bee52.netlify.app/)
 - [Wireframes](https://www.figma.com/file/99ZqMmpb5zE9t6spYkFj5E/YOURWARDROBE?type=design&node-id=0-1&mode=design&t=cNCh5kz5necI8dAP-0)
 - [Project Board](https://github.com/users/cnfairall/projects/4/views/1)
-
-## Code Snippet
-PLACE CODE SNIPPET HERE
 
 ## Project Screenshots
 <img width="1148" alt="index/generator page" src="/public/assets/generator.png">

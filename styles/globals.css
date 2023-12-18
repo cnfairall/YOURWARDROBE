@@ -112,24 +112,24 @@ Carousel.item {
 }
 
 .card {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
+  background: none!important;
+  border: none!important;
+  padding: 0!important;
+  margin: 0!important;
 }
 
 .card-body {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  justify-content: stretch;
-  align-items: center;
+  display: flex!important;
+  flex-direction: column!important;
+  padding: 10px!important;
+  justify-content: stretch!important;
+  align-items: center!important;
 }
 
 
 .pink {
   background-color: rgb(225, 64, 117)!important;
-  outline: 2px solid rgb(45, 44, 44);
+  outline: 2px solid rgb(45, 44, 44)!important;
 }
 
 .black {
@@ -260,7 +260,7 @@ h1 {
 }
 
 .blSApK {
-  margin: 10px;
+  margin: 10px!important;
 }
 
 #delete-outfit {
