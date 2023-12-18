@@ -176,6 +176,7 @@ Carousel.item {
 
 .nav-link {
   color: white!important;
+  font-size: 20px!important;
 
 }
 
@@ -209,6 +210,10 @@ h1 {
   align-items: center;
   padding: 0;
 
+}
+
+h2{
+  font-size: 40px;
 }
 
 #box {
@@ -257,10 +262,6 @@ h1 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-}
-
-.izbkZR {
-  margin: 10px!important;
 }
 
 #delete-outfit {
@@ -465,4 +466,8 @@ justify-content: space-between;
 
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
   color: rgb(225, 64, 117)!important;
+}
+
+#confirm-delete {
+  font-family: VT323;
 }

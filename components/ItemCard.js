@@ -74,7 +74,7 @@ export default function ItemCard({ itemObj, onUpdate }) {
             <Modal.Title>DELETE ITEM?</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>Are you sure you want to remove this item from your wardrobe?</p>
+            <p id="confirm-delete">Are you sure you want to remove this item from your wardrobe?</p>
             <div className="btn-grp">
               <StyledButton primary className="m-2" onClick={handleClose}>
                 CANCEL

@@ -6,9 +6,16 @@ import OutfitCard from '../components/OutfitCard';
 
 export default function ShowOutfits() {
   const [outfits, setOutfits] = useState([]);
+  const [noOutfits, setNoOutfits] = useState(false);
   const { user } = useAuth();
   const getAllOutfits = () => {
-    getOutfits(user.uid).then(setOutfits);
+    getOutfits(user.uid).then((array) => {
+      if (array.length === 0) {
+        setNoOutfits(true);
+      } else {
+        setOutfits(array);
+      }
+    });
   };
   useEffect(() => {
     getAllOutfits();
@@ -16,11 +23,11 @@ export default function ShowOutfits() {
 
   return (
     <>
-      {outfits?.length === 0 ? (
+      {noOutfits ? (
         <div className="column">
-          <h2 className="pink" style={{ padding: '20px' }}>
+          <h3 className="pink" style={{ padding: '20px' }}>
             You have no outfits saved!
-          </h2>
+          </h3>
           <div id="makeover-gif" />
         </div>
       )
