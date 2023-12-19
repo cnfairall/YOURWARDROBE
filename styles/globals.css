@@ -136,6 +136,10 @@ Carousel.item {
   color: white!important;
 }
 
+.white {
+  color: white!important;
+}
+
 #add {
   display: flex;
   flex-direction: column;
@@ -183,7 +187,6 @@ Carousel.item {
 h1 {
   margin: 20px!important;
   text-align: center;
-  color: white!important;
 }
 
 .btn-grp {
@@ -469,5 +472,5 @@ justify-content: space-between;
 }
 
 #confirm-delete {
-  font-family: VT323;
+  font-family: VT323!important;
 }

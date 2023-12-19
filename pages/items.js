@@ -21,13 +21,13 @@ export default function ShowItems() {
         <Link href="/item/new" passHref>
           <Button className="save">ADD PIECE</Button>
         </Link>
-        <h1>TOPS</h1>
+        <h1 className="white">TOPS</h1>
         <div id="top-container" className="flex-row">
           {items.tops?.map((item) => (
             <ItemCard key={item.firebaseKey} itemObj={item} onUpdate={getAllItems} />
           ))}
         </div>
-        <h1>BOTTOMS</h1>
+        <h1 className="white">BOTTOMS</h1>
         <div className="flex-row">
           {items.bottoms?.map((item) => (
             <ItemCard key={item.firebaseKey} itemObj={item} onUpdate={getAllItems} />
