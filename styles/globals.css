@@ -258,6 +258,7 @@ h2{
   flex-direction: column;
   width: 500px;
   padding: 10px;
+  align-self: center;
 }
 
 .column {
@@ -332,9 +333,6 @@ justify-content: space-between;
   --bs-btn-color: #fff!important;
   --bs-btn-bg: black!important;
   --bs-btn-border-color: black!important;
-  --bs-btn-hover-color: rgb(225, 64, 117)!important;
-  --bs-btn-hover-bg: black!important;
-  --bs-btn-hover-border-color: black!important;
   --bs-btn-focus-shadow-rgb: 49, 132, 253!important;
   --bs-btn-active-color: black!important;
   --bs-btn-active-bg: #c6c6c6!important;
@@ -471,7 +469,7 @@ justify-content: space-between;
   color: rgb(225, 64, 117)!important;
 }
 
-#confirm-delete {
+.vt323 {
   font-family: VT323!important;
-  font-size: 20px;
+  font-size: 20px!important;
 }

@@ -51,7 +51,7 @@ export default function OutfitCard({ outfitObj, onUpdate }) {
             <Modal.Title>DELETE ITEM?</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p id="confirm-delete">Are you sure you want to remove this outfit from your wardrobe?</p>
+            <p className="vt323">Are you sure you want to remove this outfit from your wardrobe?</p>
             <div className="btn-grp">
               <StyledButton className="m-2" primary onClick={handleClose}>
                 CANCEL
