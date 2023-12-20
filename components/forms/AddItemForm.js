@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, useRef } from 'react';
 import {
+  Image,
   Form, Modal, Button, ToggleButtonGroup, ToggleButton,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
@@ -213,7 +214,7 @@ export default function ItemForm({ itemObj }) {
           <Modal.Body>
             <div id="row">
               <div>You {itemObj.firebaseKey ? 'updated' : 'added'} a piece {itemObj.firebaseKey ? 'in' : 'to'} your wardrobe!</div>
-              <img id="pen" className="rock" src="/public/assets/pen.png" alt="fluffy pen animation" style={{ height: '70px' }} />
+              <Image id="pen" className="rock" src="/public/assets/pen.png" alt="fluffy pen animation" style={{ height: '70px' }} />
             </div>
             <div className="btn-grp">
               {itemObj.firebaseKey
