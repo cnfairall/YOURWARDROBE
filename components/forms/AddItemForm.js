@@ -140,6 +140,7 @@ export default function ItemForm({ itemObj }) {
                 id="toggle"
                 name="isTop"
                 type="radio"
+                required
               >
                 <ToggleButton
                   className="styled"
@@ -214,7 +215,7 @@ export default function ItemForm({ itemObj }) {
           <Modal.Body>
             <div id="row">
               <div>You {itemObj.firebaseKey ? 'updated' : 'added'} a piece {itemObj.firebaseKey ? 'in' : 'to'} your wardrobe!</div>
-              <Image id="pen" className="rock" src="/public/assets/pen.png" alt="fluffy pen animation" style={{ height: '70px' }} />
+              <Image id="pen" className="rock" src="/assets/pen.png" alt="fluffy pen animation" style={{ height: '70px' }} />
             </div>
             <div className="btn-grp">
               {itemObj.firebaseKey
