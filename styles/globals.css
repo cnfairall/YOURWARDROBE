@@ -464,8 +464,8 @@ justify-content: space-between;
 }
 
 .btn-close {
-  --bs-btn-hover-bg: transparent;
-  --bs-btn-hover-border-color: transparent;
+  --bs-btn-hover-bg: transparent!important;
+  --bs-btn-hover-border-color: transparent!important;
 }
 
 #makeover-gif {

@@ -20,6 +20,7 @@ const initialState = {
 };
 
 export default function ItemForm({ itemObj }) {
+  const [clicked, setClicked] = useState(false);
   const [progress, setProgress] = useState(0);
   const [imgUrl, setImgUrl] = useState('');
   const { user } = useAuth();
@@ -87,6 +88,10 @@ export default function ItemForm({ itemObj }) {
       updateItem(formInput).then(() => {
         handleShow();
       });
+    } else if (!clicked) {
+      window.confirm('Please select TOP or BOTTOM!');
+    } else if (!imgUrl) {
+      window.confirm('Please UPLOAD an image!');
     } else {
       const payload = { ...formInput, uid: user.uid };
       createItem(payload).then(({ name }) => {
@@ -140,7 +145,7 @@ export default function ItemForm({ itemObj }) {
                 id="toggle"
                 name="isTop"
                 type="radio"
-                required
+                onClick={setClicked}
               >
                 <ToggleButton
                   className="styled"
