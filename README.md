@@ -19,7 +19,7 @@ Remember the 90s movie Clueless, where rich-girl-with-heart-of-gold Cher clicks 
 - The user can view all of their saved outfits on the OUTFITS page, and delete those no longer wanted.
 
 ## Video Walkthrough of YOURWARDROBE
-https://www.loom.com/share/dd3cd89878554f1f908eef9d6f33aae8
+(https://www.loom.com/share/34f7be53ae3f431880ec4d45e75f4f3d)
 
 ## Code Snippet
 Creating the outfit object with the item carousel/generator form:
