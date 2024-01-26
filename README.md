@@ -1,4 +1,4 @@
-# YOURWARDROBE  [![Netlify Status](https://api.netlify.com/api/v1/badges/fe7072bb-f499-4b35-b67c-2ffbd1e4de63/deploy-status)](https://app.netlify.com/sites/monumental-boba-0bee52/deploys)
+# YOURWARDROBE 👚👗  [![Netlify Status](https://api.netlify.com/api/v1/badges/fe7072bb-f499-4b35-b67c-2ffbd1e4de63/deploy-status)](https://app.netlify.com/sites/monumental-boba-0bee52/deploys)
 
 Remember the 90s movie Clueless, where rich-girl-with-heart-of-gold Cher clicks through her clothes and assembles bitchin' outfits on her computer? Aspire no more, because now you can create your own digital wardrobe and generate outfits you can save!
 
@@ -46,6 +46,10 @@ const handleSubmit = (e) => {
   };
 
 ```
+
+## Tips for use 🪄
+- Pictures uploaded for demo user were run through a background removal program before being uploaded. I recommend https://www.remove.bg as a free web option.
+- To maintain a realistic top/bottom visual ratio for your outfits, it is suggested to take photos of your clothing items with approximately the same distance between the item and your camera. For best results, try to include as little extra space around the item as possible, so that the item comes close to touching the edges of the image.
 
 ## Relevant Links
 - [Check out the deployed site](https://yourwardrobe.netlify.app/)
